@@ -6,3 +6,18 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.dash-row{
+  margin: 0;
+}
+.dash-top{
+  margin-bottom: 100px;
+}
+.card{
+  .img-card{
+    height: 250px;
+    background-image: url("/storage/cat.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
