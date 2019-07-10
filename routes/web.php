@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/card', function(){
+    return view('card.index');
+});
+
+Route::get('/list', function(){
+    return view('list.index');
+});
