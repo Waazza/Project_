@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< Updated upstream
 Route::get('/card', function(){
     return view('card.index');
 });
@@ -22,3 +23,8 @@ Route::get('/card', function(){
 Route::get('/list', function(){
     return view('list.index');
 });
+=======
+Route::get('/card', 'CardController@index');
+
+Route::get('/list', 'ListController@index');
+>>>>>>> Stashed changes

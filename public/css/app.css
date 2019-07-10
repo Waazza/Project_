@@ -10644,10 +10644,13 @@ a.text-dark:focus {
   }
 }
 
+<<<<<<< Updated upstream
 .desc {
   margin-left: 70px;
 }
 
+=======
+>>>>>>> Stashed changes
 .desc .desc-list {
   list-style: none;
   padding: 8px;
@@ -10657,6 +10660,7 @@ a.text-dark:focus {
   margin: auto;
 }
 
+<<<<<<< Updated upstream
 input[type=range] {
   -webkit-appearance: none;
   width: 160px;
@@ -10680,16 +10684,24 @@ input[type=range]::-webkit-slider-thumb {
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
 }
 
+=======
+>>>>>>> Stashed changes
 .cst-bloc {
   height: auto;
   width: 100%;
   border-radius: 10px;
+<<<<<<< Updated upstream
   border: 2px solid black;
   box-shadow: 0px 2px black;
+=======
+  border: 1px solid #ddd;
+  box-shadow: 0px 2px #ddd;
+>>>>>>> Stashed changes
   margin: 20px 0;
   padding: 15px;
 }
 
+<<<<<<< Updated upstream
 #cst-search {
   background-image: url("/css/searchicon.png");
   /* Add a search icon to input */
@@ -10707,5 +10719,46 @@ input[type=range]::-webkit-slider-thumb {
   /* Add a grey border */
   margin-bottom: 12px;
   /* Add some space below the input */
+=======
+.search-icon {
+  position: absolute;
+  left: 30px;
+  top: 15px;
+}
+
+.cst-filter {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #ddd;
+}
+
+#cst-display-list {
+  display: none;
+}
+
+#cst-display-map {
+  display: none;
+}
+
+.cst-onglet {
+  margin: 50px 0;
+  width: 50px;
+  padding: 12px 12px 12px;
+  border: 1px solid #ddd;
+  background: #ffffff;
+}
+
+.cst-card {
+  border: 1px solid #ddd;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.cst-arrow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 52px;
+>>>>>>> Stashed changes
 }
 
