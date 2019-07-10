@@ -12,10 +12,10 @@ class AgesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('ages')->insert(
+        DB::table('ages')->insert([
             ['label' => 'Jeune'],
             ['label' => 'Adulte'],
             ['label' => 'Vieux']
-        );
+        ]);
     }
 }
