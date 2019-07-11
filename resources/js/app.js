@@ -50,3 +50,11 @@ function showList(){
     mapView.style.display = "none";
     listView.style.display = "block";
 }
+
+$( "#datepicker" ).datepicker();
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11'
+});

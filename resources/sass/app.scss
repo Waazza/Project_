@@ -6,9 +6,12 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// CSS form/animals ---------------------------------------
+
 body{
   .formAnimal{
-    margin-top: 20%;
+    margin-top: 5%;
 
     .picturInput{
       padding: 0;
@@ -23,7 +26,7 @@ body{
           height: 250px;
         }
       input{
-        background-image: url("../storage/calendar(1).png");
+        background-image: url("/storage/calendar1.png");
         background-position: right;
         background-repeat: no-repeat;
         text-align: center;
@@ -73,9 +76,7 @@ body{
   }
 }
 
-
-
-// Style for Card's view
+// CSS page card --------------------------------------
 
 .desc{
     .desc-list{
@@ -110,6 +111,7 @@ body{
 //    background:black;
 //    position:relative;
 //    box-shadow:0 0 5px 0 rgba(0,0,0,0.3);
+
 $border : 1px solid #ddd;
 
 .cst-bloc{
@@ -122,7 +124,7 @@ $border : 1px solid #ddd;
     padding: 15px;
 }
 
-// Style for List's view
+// CSS page list -----------------------------------
 
 .search-icon{
     position: absolute;
@@ -165,27 +167,35 @@ $border : 1px solid #ddd;
     font-size: 52px;
 }
 
+// CSS page mon-compte/dashboard ----------------------------------------
+
 .dash-row{
   margin: 0;
 }
+
 .dash-top{
   margin-bottom: 100px;
 }
+
 .card{
+
   .img-card{
     height: 250px;
     background-image: url("/storage/cat.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
+
   .img-trap{
     display: flex;
     justify-content: center;
     align-items: center;
+
     .img-thumb{
       width: 100%;
       height: 100%;
     }
+
   }
 
 }

@@ -76,7 +76,7 @@
                     </div>
                     <div class="col-4">
                         <div>
-                            <input type="number" class="address">
+                            <input type="text" class="address">
                         </div>
                         <div>
                             <a href="">Trouver un refuge à proximité</a>
