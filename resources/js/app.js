@@ -30,3 +30,23 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+var listIcon = document.getElementById("list-icon");
+var mapIcon = document.getElementById("map-icon");
+
+var listView = document.getElementById("list-view");
+var mapView = document.getElementById("map-view");
+
+mapView.style.display = "none";
+
+mapIcon.addEventListener("click", showMap);
+function showMap(){
+    mapView.style.display = "block";
+    listView.style.display = "none";
+}
+
+listIcon.addEventListener("click", showList);
+function showList(){
+    mapView.style.display = "none";
+    listView.style.display = "block";
+}
