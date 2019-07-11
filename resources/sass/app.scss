@@ -7,27 +7,195 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// CSS form/animals ---------------------------------------
+
+body{
+  .formAnimal{
+    margin-top: 5%;
+
+    .picturInput{
+      padding: 0;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+        .img-fluid{
+          width: 60%;
+          background-image: url(https://via.placeholder.com/150);
+          background-size: cover;
+          height: 250px;
+        }
+      input{
+        background-image: url("/storage/calendar1.png");
+        background-position: right;
+        background-repeat: no-repeat;
+        text-align: center;
+      }
+    }
+    .categoryInput{
+      padding: 0;
+
+      .category{
+        display:flex;
+        justify-content:space-evenly;
+
+        select, input{
+          width:30%;
+        }
+        .addCategory{
+          width: 60%;
+        }
+      }
+    }
+    .comment{
+      margin: 0 auto;
+      width: 60%;
+    }
+
+    .keepIt{
+      display: flex;
+      justify-content: space-evenly;
+      width: 100% !important;
+      align-items: center;
+
+      .checkRefuge{
+        display: flex;
+
+        .refuge{
+          width: 90%;
+        }
+        .day{
+          width: 25% !important;
+        }
+      }
+    }
+    iframe{
+      height: 300px;
+      width: 100%;
+    }
+  }
+}
+
+// CSS page card --------------------------------------
+
+.desc{
+    .desc-list{
+        list-style: none;
+        padding: 8px;
+    }
+}
+
+.cst-img-position{
+    margin: auto;
+}
+// Range style
+
+//input[type="range"]{
+//    -webkit-appearance:none;
+//    width:160px;
+//    height:10px;
+//    margin:10px 50px;
+//    background: linear-gradient(to right, #2193b0 0%, #6dd5ed 100%);
+//    background-size:150px 10px;
+//    background-position:center;
+//    background-repeat:no-repeat;
+//    overflow:hidden;
+//    outline: none;
+//}
+//
+//input[type="range"]::-webkit-slider-thumb{
+//    -webkit-appearance:none;
+//    width:12px;
+//    border-radius: 50px;
+//    height:11px;
+//    background:black;
+//    position:relative;
+//    box-shadow:0 0 5px 0 rgba(0,0,0,0.3);
+
+$border : 1px solid #ddd;
+
+.cst-bloc{
+    height: auto;
+    width: 100%;
+    border-radius: 10px;
+    border: $border;
+    box-shadow: 0px 2px #ddd;
+    margin: 20px 0;
+    padding: 15px;
+}
+
+// CSS page list -----------------------------------
+
+.search-icon{
+    position: absolute;
+    left: 30px;
+    top: 15px;
+}
+
+.cst-filter{
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: $border;
+}
+
+#cst-display-list{
+    display: none;
+}
+
+#cst-display-map{
+    display: none;
+}
+
+.cst-onglet{
+    margin: 50px 0;
+    width: 50px;
+    padding: 12px 12px 12px;
+    border: $border;
+    background: #ffffff;
+}
+
+.cst-card{
+    border: $border;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.cst-arrow{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 52px;
+}
+
+// CSS page mon-compte/dashboard ----------------------------------------
+
 .dash-row{
   margin: 0;
 }
+
 .dash-top{
   margin-bottom: 100px;
 }
+
 .card{
+
   .img-card{
     height: 250px;
     background-image: url("/storage/cat.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
+
   .img-trap{
     display: flex;
     justify-content: center;
     align-items: center;
+
     .img-thumb{
       width: 100%;
       height: 100%;
     }
+
   }
 
 }
