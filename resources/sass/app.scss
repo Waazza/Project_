@@ -72,3 +72,95 @@ body{
     }
   }
 }
+
+
+
+// Style for Card's view
+
+.desc{
+    .desc-list{
+        list-style: none;
+        padding: 8px;
+    }
+}
+
+.cst-img-position{
+    margin: auto;
+}
+// Range style
+
+//input[type="range"]{
+//    -webkit-appearance:none;
+//    width:160px;
+//    height:10px;
+//    margin:10px 50px;
+//    background: linear-gradient(to right, #2193b0 0%, #6dd5ed 100%);
+//    background-size:150px 10px;
+//    background-position:center;
+//    background-repeat:no-repeat;
+//    overflow:hidden;
+//    outline: none;
+//}
+//
+//input[type="range"]::-webkit-slider-thumb{
+//    -webkit-appearance:none;
+//    width:12px;
+//    border-radius: 50px;
+//    height:11px;
+//    background:black;
+//    position:relative;
+//    box-shadow:0 0 5px 0 rgba(0,0,0,0.3);
+$border : 1px solid #ddd;
+
+.cst-bloc{
+    height: auto;
+    width: 100%;
+    border-radius: 10px;
+    border: $border;
+    box-shadow: 0px 2px #ddd;
+    margin: 20px 0;
+    padding: 15px;
+}
+
+// Style for List's view
+
+.search-icon{
+    position: absolute;
+    left: 30px;
+    top: 15px;
+}
+
+.cst-filter{
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: $border;
+}
+
+#cst-display-list{
+    display: none;
+}
+
+#cst-display-map{
+    display: none;
+}
+
+.cst-onglet{
+    margin: 50px 0;
+    width: 50px;
+    padding: 12px 12px 12px;
+    border: $border;
+    background: #ffffff;
+}
+
+.cst-card{
+    border: $border;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.cst-arrow{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 52px;
+}
