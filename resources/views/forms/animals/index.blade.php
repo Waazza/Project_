@@ -85,7 +85,7 @@
                 </div>
             </div>
             <div>
-                <iframe src="https://www.google.com/maps/embed?pb=" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <div id='map' style='width: 100%; height: 300px;'></div>
             </div>
         </div>
     </form>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateColorEyesTable extends Migration
+class CreateRacesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateColorEyesTable extends Migration
      */
     public function up()
     {
-        Schema::create('color_eyes', function (Blueprint $table) {
+        Schema::create('races', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('label');
+            $table->unsignedBigInteger('id_type_fk');
+            $table->foreign('id_type_fk')->references('id')->on('types');
         });
     }
 
@@ -26,6 +28,6 @@ class CreateColorEyesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('color_eyes');
+        Schema::dropIfExists('races');
     }
 }

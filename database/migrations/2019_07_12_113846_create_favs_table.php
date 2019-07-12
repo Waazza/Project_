@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateColorEyesTable extends Migration
+class CreateFavsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateColorEyesTable extends Migration
      */
     public function up()
     {
-        Schema::create('color_eyes', function (Blueprint $table) {
+        Schema::create('favs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('label');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +26,6 @@ class CreateColorEyesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('color_eyes');
+        Schema::dropIfExists('favs');
     }
 }

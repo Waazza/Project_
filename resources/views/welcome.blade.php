@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="links">
-                    <a href="/forms/animals">Formulaire</a>
+                    <a href="/forms/animals">Formulaire !</a>
                 </div>
             </div>
         </div>
