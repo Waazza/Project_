@@ -10755,6 +10755,10 @@ body .formAnimal iframe {
   display: none;
 }
 
+#map-view {
+  display: none;
+}
+
 .cst-onglet {
   margin: 50px 0;
   width: 50px;
@@ -10774,6 +10778,18 @@ body .formAnimal iframe {
   flex-wrap: wrap;
   justify-content: center;
   font-size: 52px;
+}
+
+.cst-nav {
+  margin-bottom: 50px;
+}
+
+.cstx-bg {
+  color: black;
+  border-width: 3px;
+  border-style: solid;
+  -o-border-image: linear-gradient(to bottom, white, #646464) 1 100%;
+     border-image: linear-gradient(to bottom, white, #646464) 1 100%;
 }
 
 .dash-row {

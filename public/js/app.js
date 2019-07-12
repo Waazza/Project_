@@ -49212,36 +49212,59 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 // const app = new Vue({
 //     el: '#app',
 // });
-// var listIcon = document.getElementById("list-icon");
-// var mapIcon = document.getElementById("map-icon");
-//
-// var listView = document.getElementById("list-view");
-// var mapView = document.getElementById("map-view");
-//
-// mapView.style.display = "none";
-//
-// mapIcon.addEventListener("click", showMap);
-// function showMap(){
-//     mapView.style.display = "block";
-//     listView.style.display = "none";
-// }
-//
-// listIcon.addEventListener("click", showList);
-// function showList(){
-//     mapView.style.display = "none";
-//     listView.style.display = "block";
-// }
 
 $(function () {
-  if (window.location.href === 'http://project.test:8080/forms/animals') {
+  if (window.location.href === 'http://project.test:8080') {// Check current page to select which script to run
+  } else if (window.location.href === 'http://project.test:8080/forms/animals') {
+    // Script MapBox init ---------------------------
     mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11'
-    });
-  }
+      style: 'mapbox://styles/waazza/cjxzueo0b0pz51cpewfnc822o',
+      zoom: 16,
+      center: [-0.5827, 44.8423]
+    }); // SSL Certificat needed ---------------------------
+    // let options = {
+    //     enableHighAccuracy: true,
+    //     timeout: 5000,
+    //     maximumAge: 0
+    // };
+    // function success(pos) {
+    //     let crd = pos.coords;
+    //
+    //     console.log('Your current position is:');
+    //     console.log(`Latitude : ${crd.latitude}`);
+    //     console.log(`Longitude: ${crd.longitude}`);
+    //     console.log(`More or less ${crd.accuracy} meters.`);
+    // }
+    //
+    // function error(err) {
+    //     console.warn(`ERROR(${err.code}): ${err.message}`);
+    // }
+    //
+    // navigator.geolocation.getCurrentPosition(success, error, options);
+    // Date picker script -----------------------
 
-  $("#datepicker").datepicker();
+    $("#datepicker").datepicker();
+  } else if (window.location.href === 'http://project.test:8080/list' || window.location.href === 'http://project.test:8080/list#') {
+    var showMap = function showMap() {
+      mapView.style.display = "block";
+      listView.style.display = "none";
+    };
+
+    var showList = function showList() {
+      mapView.style.display = "none";
+      listView.style.display = "block";
+    };
+
+    // Switch list/map view ---------------------------
+    var listIcon = document.getElementById("list-icon");
+    var mapIcon = document.getElementById("map-icon");
+    var listView = document.getElementById("list-view");
+    var mapView = document.getElementById("map-view");
+    mapIcon.addEventListener("click", showMap);
+    listIcon.addEventListener("click", showList);
+  }
 });
 
 /***/ }),

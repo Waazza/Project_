@@ -146,6 +146,10 @@ $border : 1px solid #ddd;
     display: none;
 }
 
+#map-view{
+  display: none;
+}
+
 .cst-onglet{
     margin: 50px 0;
     width: 50px;
@@ -168,6 +172,22 @@ $border : 1px solid #ddd;
 }
 
 // CSS page mon-compte/dashboard ----------------------------------------
+
+.cst-nav{
+  margin-bottom: 50px;
+}
+
+.cstx-bg{
+  color: black;
+  border-width: 3px;
+  border-style: solid;
+  border-image:
+          linear-gradient(
+                          to bottom,
+                          white,
+                          rgba(100, 100, 100, 1)
+          ) 1 100%;
+}
 
 .dash-row{
   margin: 0;
