@@ -12,10 +12,10 @@ class SizesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('sizes')->insert(
+        DB::table('sizes')->insert([
             ['label' => 'Petit'],
             ['label' => 'Moyen'],
             ['label' => 'Grand']
-        );
+        ]);
     }
 }

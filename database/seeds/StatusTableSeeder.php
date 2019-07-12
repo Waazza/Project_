@@ -12,10 +12,10 @@ class StatusTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('status')->insert(
+        DB::table('status')->insert([
             ['label' => 'Perdu'],
             ['label' => 'Trouvé'],
             ['label' => 'undefined']
-        );
+        ]);
     }
 }

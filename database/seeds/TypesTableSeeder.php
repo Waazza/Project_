@@ -12,11 +12,10 @@ class TypesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('types')->insert(
+        DB::table('types')->insert([
             ['label' => 'Chien'],
             ['label' => 'Chat'],
-            ['label' => 'NAC'],
-            ['label' => 'Autre']
-        );
+            ['label' => 'Nouveaux animaux de compagnie (NAC)']
+        ]);
     }
 }
