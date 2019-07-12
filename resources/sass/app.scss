@@ -7,9 +7,7 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// CSS form/animals ---------------------------------------
-
-body{
+  // CSS form/animals ---------------------------------------
   .formAnimal{
     margin-top: 5%;
 
@@ -74,6 +72,21 @@ body{
       width: 100%;
     }
   }
+
+// CSS form/formInscriptions ---------------------------------------
+.formInscriptions{
+  margin-top: 20px;
+  .section{
+    border: 3px solid #3f9ae5;
+    border-radius: 10px;
+    box-shadow: 8px 8px 12px #aaa;
+    padding: 10px;
+
+    h3{
+      text-align: center;
+    }
+  }
+
 }
 
 // CSS page card --------------------------------------
@@ -146,10 +159,6 @@ $border : 1px solid #ddd;
     display: none;
 }
 
-#map-view{
-  display: none;
-}
-
 .cst-onglet{
     margin: 50px 0;
     width: 50px;
@@ -172,22 +181,6 @@ $border : 1px solid #ddd;
 }
 
 // CSS page mon-compte/dashboard ----------------------------------------
-
-.cst-nav{
-  margin-bottom: 50px;
-}
-
-.cstx-bg{
-  color: black;
-  border-width: 3px;
-  border-style: solid;
-  border-image:
-          linear-gradient(
-                          to bottom,
-                          white,
-                          rgba(100, 100, 100, 1)
-          ) 1 100%;
-}
 
 .dash-row{
   margin: 0;
@@ -218,4 +211,32 @@ $border : 1px solid #ddd;
 
   }
 
+}
+// media queries ----------------------------------------------------
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .formInscriptions{
+    .row{
+      display:flex;
+      flex-direction: column;
+    }
+  }
+
+}
+.cst-nav{
+  margin-bottom: 50px;
+}
+.cstx-bg{
+  color: black;
+  border-width: 3px;
+  border-style: solid;
+  border-image:
+
+          linear-gradient(
+                          to bottom,
+                          white,
+                          rgba(100, 100, 100, 1)
+          ) 1 100%;
+}
+#map-view{
+  display: none;
 }

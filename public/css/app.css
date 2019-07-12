@@ -10644,76 +10644,91 @@ a.text-dark:focus {
   }
 }
 
-body .formAnimal {
+.formAnimal {
   margin-top: 5%;
 }
 
-body .formAnimal .picturInput {
+.formAnimal .picturInput {
   padding: 0;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-body .formAnimal .picturInput .img-fluid {
+.formAnimal .picturInput .img-fluid {
   width: 60%;
   background-image: url(https://via.placeholder.com/150);
   background-size: cover;
   height: 250px;
 }
 
-body .formAnimal .picturInput input {
+.formAnimal .picturInput input {
   background-image: url("/storage/calendar1.png");
   background-position: right;
   background-repeat: no-repeat;
   text-align: center;
 }
 
-body .formAnimal .categoryInput {
+.formAnimal .categoryInput {
   padding: 0;
 }
 
-body .formAnimal .categoryInput .category {
+.formAnimal .categoryInput .category {
   display: flex;
   justify-content: space-evenly;
 }
 
-body .formAnimal .categoryInput .category select,
-body .formAnimal .categoryInput .category input {
+.formAnimal .categoryInput .category select,
+.formAnimal .categoryInput .category input {
   width: 30%;
 }
 
-body .formAnimal .categoryInput .category .addCategory {
+.formAnimal .categoryInput .category .addCategory {
   width: 60%;
 }
 
-body .formAnimal .comment {
+.formAnimal .comment {
   margin: 0 auto;
   width: 60%;
 }
 
-body .formAnimal .keepIt {
+.formAnimal .keepIt {
   display: flex;
   justify-content: space-evenly;
   width: 100% !important;
   align-items: center;
 }
 
-body .formAnimal .keepIt .checkRefuge {
+.formAnimal .keepIt .checkRefuge {
   display: flex;
 }
 
-body .formAnimal .keepIt .checkRefuge .refuge {
+.formAnimal .keepIt .checkRefuge .refuge {
   width: 90%;
 }
 
-body .formAnimal .keepIt .checkRefuge .day {
+.formAnimal .keepIt .checkRefuge .day {
   width: 25% !important;
 }
 
-body .formAnimal iframe {
+.formAnimal iframe {
   height: 300px;
   width: 100%;
+}
+
+.formInscriptions {
+  margin-top: 20px;
+}
+
+.formInscriptions .section {
+  border: 3px solid #3f9ae5;
+  border-radius: 10px;
+  box-shadow: 8px 8px 12px #aaa;
+  padding: 10px;
+}
+
+.formInscriptions .section h3 {
+  text-align: center;
 }
 
 .desc .desc-list {
@@ -10755,10 +10770,6 @@ body .formAnimal iframe {
   display: none;
 }
 
-#map-view {
-  display: none;
-}
-
 .cst-onglet {
   margin: 50px 0;
   width: 50px;
@@ -10778,18 +10789,6 @@ body .formAnimal iframe {
   flex-wrap: wrap;
   justify-content: center;
   font-size: 52px;
-}
-
-.cst-nav {
-  margin-bottom: 50px;
-}
-
-.cstx-bg {
-  color: black;
-  border-width: 3px;
-  border-style: solid;
-  -o-border-image: linear-gradient(to bottom, white, #646464) 1 100%;
-     border-image: linear-gradient(to bottom, white, #646464) 1 100%;
 }
 
 .dash-row {
@@ -10818,3 +10817,24 @@ body .formAnimal iframe {
   height: 100%;
 }
 
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .formInscriptions .row {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+#map-view {
+  display: none;
+}
+.cst-nav {
+  margin-bottom: 50px;
+}
+.cstx-bg {
+  color: black;
+  border-width: 3px;
+  border-style: solid;
+  -o-border-image: linear-gradient(to bottom, white, #646464) 1 100%;
+     border-image: linear-gradient(to bottom, white, #646464) 1 100%;
+}

@@ -18,17 +18,17 @@
                     <div class="form-group category" >
                         <label for="type">Type</label>
                         <select class="form-control" id="type" name="type">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
+                            @foreach($types as $type)
+                            <option value="{{$type->label}}">{{$type->label}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group category" >
                         <label for="gender">Genre</label>
                         <select class="form-control" id="gender" name="gender">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
+                            @foreach($genders as $gender)
+                                <option value="{{$gender->label}}">{{$gender->label}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group category">
@@ -38,16 +38,15 @@
                     <div class="form-group category" >
                         <label for="color">Couleur</label>
                         <select class="form-control" id="color" name="color">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
+                            @foreach($colors as $color)
+                                <option value="{{$color->label}}">{{$color->label}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group category">
                         <select class="form-control addCategory" id="add" name="add">
                             <option>Ajouter des caractéristique</option>
                             <option value="">2</option>
-                            <option value="">3</option>
                         </select>
                     </div>
                 </div>
