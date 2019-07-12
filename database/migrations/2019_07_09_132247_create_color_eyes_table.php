@@ -15,7 +15,7 @@ class CreateColorEyesTable extends Migration
     {
         Schema::create('color_eyes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('color_eyes');
+            $table->string('label');
         });
     }
 

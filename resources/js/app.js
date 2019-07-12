@@ -27,6 +27,36 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+/*const app = new Vue({
     el: '#app',
+});*/
+
+/*var listIcon = document.getElementById("list-icon");
+var mapIcon = document.getElementById("map-icon");
+
+var listView = document.getElementById("list-view");
+var mapView = document.getElementById("map-view");
+
+mapView.style.display = "none";
+
+mapIcon.addEventListener("click", showMap);
+function showMap(){
+    mapView.style.display = "block";
+    listView.style.display = "none";
+}
+
+listIcon.addEventListener("click", showList);
+function showList(){
+    mapView.style.display = "none";
+    listView.style.display = "block";
+}*/
+$(function() {
+    $( "#datepicker" ).datepicker();
+
+    mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11'
+    });
 });
+
