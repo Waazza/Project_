@@ -12,10 +12,10 @@ class FurSizesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('fur_sizes')->insert(
+        DB::table('fur_sizes')->insert([
             ['label' => 'Court'],
             ['label' => 'Moyen'],
             ['label' => 'Long']
-        );
+        ]);
     }
 }

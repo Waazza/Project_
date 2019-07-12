@@ -23,27 +23,28 @@
 }
 // Range style
 
-//input[type="range"]{
-//    -webkit-appearance:none;
-//    width:160px;
-//    height:10px;
-//    margin:10px 50px;
-//    background: linear-gradient(to right, #2193b0 0%, #6dd5ed 100%);
-//    background-size:150px 10px;
-//    background-position:center;
-//    background-repeat:no-repeat;
-//    overflow:hidden;
-//    outline: none;
-//}
-//
-//input[type="range"]::-webkit-slider-thumb{
-//    -webkit-appearance:none;
-//    width:12px;
-//    border-radius: 50px;
-//    height:11px;
-//    background:black;
-//    position:relative;
-//    box-shadow:0 0 5px 0 rgba(0,0,0,0.3);
+input[type="range"]{
+    -webkit-appearance:none;
+    width:160px;
+    height:10px;
+    margin:10px 50px;
+    background: linear-gradient(to right, #2193b0 0%, #6dd5ed 100%);
+    background-size:150px 10px;
+    background-position:center;
+    background-repeat:no-repeat;
+    overflow:hidden;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    border-radius: 50px;
+    height: 11px;
+    background: black;
+    position: relative;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+}
 $border : 1px solid #ddd;
 
 .cst-bloc{
@@ -60,14 +61,15 @@ $border : 1px solid #ddd;
 
 .search-icon{
     position: absolute;
-    left: 30px;
-    top: 15px;
+    left: 50px;
+    top: 25px;
 }
 
 .cst-filter{
     width: 100%;
     padding: 12px 12px 12px 40px;
     border: $border;
+    background: #ffffff;
 }
 
 #cst-display-list{

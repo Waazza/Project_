@@ -12,10 +12,10 @@ class GendersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('types')->insert(
+        DB::table('genders')->insert([
             ['label' => 'Male'],
             ['label' => 'Femelle'],
             ['label' => 'Inconnu']
-        );
+        ]);
     }
 }

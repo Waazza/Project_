@@ -16,6 +16,7 @@ class CreateRacesTable extends Migration
         Schema::create('races', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('label');
+            $table->unsignedBigInteger('id_type_fk');
             $table->foreign('id_type_fk')->references('id')->on('types');
         });
     }
