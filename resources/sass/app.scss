@@ -124,7 +124,6 @@
 //    background:black;
 //    position:relative;
 //    box-shadow:0 0 5px 0 rgba(0,0,0,0.3);
-
 $border : 1px solid #ddd;
 
 .cst-bloc{
@@ -141,14 +140,15 @@ $border : 1px solid #ddd;
 
 .search-icon{
     position: absolute;
-    left: 30px;
-    top: 15px;
+    left: 50px;
+    top: 25px;
 }
 
 .cst-filter{
     width: 100%;
     padding: 12px 12px 12px 40px;
     border: $border;
+    background: #ffffff;
 }
 
 #cst-display-list{

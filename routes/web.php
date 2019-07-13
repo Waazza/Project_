@@ -30,6 +30,8 @@ Route::get('/list', function(){
 Route::get('/card', 'CardController@index');
 
 Route::get('/list', 'ListController@index');
+Route::get('/search', 'ListController@search')->name('search');
+Route::get('/color', 'ListController@filterColor')->name('color');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
