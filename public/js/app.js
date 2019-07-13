@@ -49218,7 +49218,8 @@ $(function () {
   } else if (window.location.href === 'http://project.test:8080/forms/animals') {
     // Script MapBox init ---------------------------
     mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
-    var map = new mapboxgl.Map({
+
+    var _map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/waazza/cjxzueo0b0pz51cpewfnc822o',
       zoom: 16,
@@ -49245,25 +49246,31 @@ $(function () {
     // navigator.geolocation.getCurrentPosition(success, error, options);
     // Date picker script -----------------------
 
+
     $("#datepicker").datepicker();
   } else if (window.location.href === 'http://project.test:8080/list' || window.location.href === 'http://project.test:8080/list#') {
-    var showMap = function showMap() {
-      mapView.style.display = "block";
-      listView.style.display = "none";
+    var _showMap = function _showMap() {
+      _mapView.style.display = "block";
+      _listView.style.display = "none";
     };
 
-    var showList = function showList() {
-      mapView.style.display = "none";
-      listView.style.display = "block";
+    var _showList = function _showList() {
+      _mapView.style.display = "none";
+      _listView.style.display = "block";
     };
 
     // Switch list/map view ---------------------------
-    var listIcon = document.getElementById("list-icon");
-    var mapIcon = document.getElementById("map-icon");
-    var listView = document.getElementById("list-view");
-    var mapView = document.getElementById("map-view");
-    mapIcon.addEventListener("click", showMap);
-    listIcon.addEventListener("click", showList);
+    var _listIcon = document.getElementById("list-icon");
+
+    var _mapIcon = document.getElementById("map-icon");
+
+    var _listView = document.getElementById("list-view");
+
+    var _mapView = document.getElementById("map-view");
+
+    _mapIcon.addEventListener("click", _showMap);
+
+    _listIcon.addEventListener("click", _showList);
   }
 });
 var listIcon = document.getElementById("list-icon");
@@ -49290,6 +49297,26 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v11'
+}); // jQuerry carousel slider cards controller
+
+$('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
+  var next = $(this).next();
+
+  if (!next.length) {
+    next = $(this).siblings(':first');
+  }
+
+  next.children(':first-child').clone().appendTo($(this));
+
+  for (var i = 0; i < 0; i++) {
+    next = next.next();
+
+    if (!next.length) {
+      next = $(this).siblings(':first');
+    }
+
+    next.children(':first-child').clone().appendTo($(this));
+  }
 });
 
 /***/ }),
@@ -49439,8 +49466,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\ProjectTest\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\ProjectTest\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\Project\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\Project\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

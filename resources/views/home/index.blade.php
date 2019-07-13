@@ -25,22 +25,22 @@
 <div class="container">
   <div class="carousel-inner v-2" role="listbox">
 
-    @foreach($sliders->animals as $slider)
-    <div class="carousel-item active">
-      <div class="col-12 col-md-4">
-        <div class="card mb-4" >
-          <img class="card-img-top" src="{{ $animals->picture }}" alt="">
-          <div class="card-body">
-            <h4 class="card-title font-weight-bold" {{ $animals->name }}></h4>
-            <p class="card-text {{ $animals->type }}"></p>
-            <p class="card-text {{ $animals->comment }}"></p>
-              <span> {{ $animals->timestamp }}</span>
-            <a class="btn btn-primary btn-md btn-rounded">Button</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  @endforeach
+{{--    @foreach($sliders->animals as $slider)--}}
+{{--    <div class="carousel-item active">--}}
+{{--      <div class="col-12 col-md-4">--}}
+{{--        <div class="card mb-4" >--}}
+{{--          <img class="card-img-top" src="{{ $animals->picture }}" alt="">--}}
+{{--          <div class="card-body">--}}
+{{--            <h4 class="card-title font-weight-bold" {{ $animals->name }}></h4>--}}
+{{--            <p class="card-text {{ $animals->type }}"></p>--}}
+{{--            <p class="card-text {{ $animals->comment }}"></p>--}}
+{{--              <span> {{ $animals->timestamp }}</span>--}}
+{{--            <a class="btn btn-primary btn-md btn-rounded">Button</a>--}}
+{{--          </div>--}}
+{{--        </div>--}}
+{{--      </div>--}}
+{{--    </div>--}}
+{{--  @endforeach--}}
     <div class="carousel-item">
       <div class="col-12 col-md-4">
         <div class="card mb-4">
