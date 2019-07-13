@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
 Route::get('/forms/animals', 'FormAnimalController@index');
 Route::get('/forms/inscriptions', 'FormInscriController@index');
@@ -31,3 +31,6 @@ Route::get('/card', 'CardController@index');
 
 Route::get('/list', 'ListController@index');
 
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('home', 'HomeController');

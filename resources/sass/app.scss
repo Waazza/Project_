@@ -240,3 +240,82 @@ $border : 1px solid #ddd;
 #map-view{
   display: none;
 }
+.btn-container{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+    .btn-submit{
+      border:1rem solid green;
+      font-weight: bolder;
+      font-size: 1.5rem;
+      color:dodgerblue;
+  }
+}
+h1{
+  color:dodgerblue;
+}
+nav{
+  margin-bottom: 1rem;
+    display:flex;
+  .navbar{
+    justify-content: space-between;
+    .navbar-brand{
+      .navbar-nav{
+          .nav-link{
+        .nav-item{
+          }
+      }
+        }
+    }
+  }
+}
+.controls-top{
+  justify-content: space-between;
+  display:flex;
+    .btn-floating{
+      font-size: 3rem!important;
+      .fa {
+    }
+  }
+}
+.row {
+    .found-pets {
+      align-items: center;
+      justify-content: flex-start;
+      display:flex;
+      align-content: center;
+    .lost-pets{
+    }
+      align-items: center;
+      display:flex;
+      justify-content: flex-end;
+      align-content: center;
+    }
+      height: 20rem;
+    .btn{
+      width: 25rem;
+      font-size: 2rem;
+      border-radius: 15rem;
+      font-weight:bolder;
+      color:red;
+      opacity: 0.6;
+      background-color: silver;
+}
+    }
+.carousel{
+  margin-bottom: 2rem;
+  .carousel-item{
+      width:100%;
+      box-sizing: border-box;
+      height:50%;
+      border: 1px solid black;
+      padding-left: 17rem;
+      padding-top: 2.5rem;
+      .col-12{
+        display:inline-block;
+        .card{
+          border:1px solid red;
+        }
+      }
+}
+  }
