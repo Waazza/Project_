@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FurSize extends Model
+class Age extends Model
 {
     public function animal()
     {

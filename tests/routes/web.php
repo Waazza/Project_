@@ -16,7 +16,8 @@ Route::get('/', function () {
 });
 Route::get('/forms/animals', 'FormAnimalController@index');
 
-Route::get('/mon-compte/dashboard', 'MonCompteController@index');
+
+Route::get('/monCompte/dashboard', 'MonCompteController@index');
 
 Route::get('/card', function(){
     return view('card.index');

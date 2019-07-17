@@ -3,128 +3,124 @@
    {{--     {{ dd($animals) }}--}}
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <nav class="col-md-2 d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
+                            <form class="cst-filter" action="{{ route('search') }}" method="GET" id="abc">
+                                {{csrf_field()}}
                             <a class="nav-link" href="#">
-                                <form action="{{ route('search') }}" method="GET" >
-                                    {{csrf_field()}}
-                                    <i class='fas fa-search search-icon'></i><input name="search" type="search" class="cst-filter" placeholder="Recherchez...">
-                                </form>
+                                <i class='fas fa-search search-icon'></i><input name="search" type="search" class="cst-filter" placeholder="Recherchez...">
                             </a>
+                            </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <select class="cst-filter">
-                                    <option disabled selected>Trier par :</option>
-                                    <option value="1">Date d'ajout</option>
-                                </select>
-                            </a>
+                            <form class="cst-filter" action="{{ route('race') }}" method="GET" >
+                                {{csrf_field()}}
+                                <a class="nav-link" href="#">
+                                    <i class='fas fa-search search-race-icon'></i><input name="race" type="search" class="cst-filter" placeholder="Race...">
+                                </a>
+                            </form>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <select name="type" class="cst-filter">
-                                    <option disabled selected>Quel type d'animal recherchez-vous ?</option>
-                                    @foreach($types as $type)
-                                        <option value="{{ $type->id }}">{{ $type->label }}</option>
+                        <form class="cst-filter" action="{{ route('filter') }}" method="POST" id="filter">
+                            {{csrf_field()}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <select name="type" class="cst-filter">
+                                        <option value="" selected disabled>Quel type d'animal recherchez-vous ?</option>
+                                        @foreach($types as $type)
+                                            <option value="{{ $type->id }}">{{ $type->label }}</option>
+                                        @endforeach
+                                    </select>
+                                </a>
+                            </li>
+                            <li class="nav-item nav-link">
+                                <div class="cst-filter form-check form-check-inline">
+                                    <label class="form-check-label">Pucé</label>
+                                    <input class="form-check-input" name="microship" type="radio" value="0">
+
+                                    <label class="form-check-label">Non Pucé</label>
+                                    <input class="form-check-input" name="microship" type="radio" value="1">
+                                </div>
+                            </li>
+                            <li class="nav-item nav-link">
+                                <div class="cst-filter form-check form-check-inline">
+                                    <label class="form-check-label">Collier</label>
+                                    <input class="form-check-input" name="collar" type="radio" value="0">
+
+                                    <label class="form-check-label">Sans Collier</label>
+                                    <input class="form-check-input" name="collar" type="radio" value="1">
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <select name="color" class="cst-filter">
+                                        <option value="" selected disabled>Sélectionner une couleur de poil ?</option>
+                                        @foreach($colors as $color)
+                                            <option value="{{ $color->id }}">{{ $color->label }}</option>
+                                        @endforeach
+                                    </select>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <select name="eyes-color" class="cst-filter">
+                                        <option value="" selected disabled>Sélectionner une couleur des yeux ?</option>
+                                        @foreach($colorsEyes as $colorEyes)
+                                            <option value="{{ $colorEyes->id }}">{{ $colorEyes->color_eyes }}</option>
+                                        @endforeach
+                                    </select>
+                                </a>
+                            </li>
+                            <li class="nav-item nav-link">
+                                <div class="cst-filter form-check form-check-inline">
+                                    @foreach($genders as $gender)
+                                        <label class="form-check-label">{{ $gender->label }}</label>
+                                        <input class="form-check-input" type="radio" value="{{ $gender->id }}" name="gender">
                                     @endforeach
-                                </select>
-                            </a>
-                        </li>
-
-                        <li class="nav-item nav-link">
-                            <div class="cst-filter form-check form-check-inline">
-                                <label class="form-check-label">Tatoué</label>
-                                <input class="form-check-input" name="tatoo" type="radio" value="0">
-
-                                <label class="form-check-label">Non Tatoué</label>
-                                <input class="form-check-input" name="tatoo" type="radio" value="1">
-                            </div>
-                        </li>
-                        <li class="nav-item nav-link">
-                            <div class="cst-filter form-check form-check-inline">
-                                <label class="form-check-label">Pucé</label>
-                                <input class="form-check-input" name="microship" type="radio" value="0">
-
-                                <label class="form-check-label">Non Pucé</label>
-                                <input class="form-check-input" name="microship" type="radio" value="1">
-                            </div>
-                        </li>
-                        <li class="nav-item nav-link">
-                            <div class="cst-filter form-check form-check-inline">
-                                <label class="form-check-label">Collier</label>
-                                <input class="form-check-input" name="collar" type="radio" value="0">
-
-                                <label class="form-check-label">Sans Collier</label>
-                                <input class="form-check-input" name="collar" type="radio" value="1">
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <select name="color" id="color" class="cst-filter">
-                                    <option disabled selected>Sélectionner une couleur de poil ?</option>
-                                    @foreach($colors as $color)
-                                        <option value="{{ $color->id }}">{{ $color->label }}</option>
+                                </div>
+                            </li>
+                            <li class="nav-item nav-link">
+                                <div class="cst-filter">
+                                    @foreach($sizes as $size)
+                                        <label class="form-check-label">{{ $size->label }}</label>
+                                        <input class="form-check-input" type="radio" value="{{ $size->id }}" name="size">
                                     @endforeach
-                                </select>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <select name="eyes-color" class="cst-filter">
-                                    <option disabled selected>Sélectionner une couleur des yeux ?</option>
-                                    @foreach($colorsEyes as $colorEyes)
-                                        <option value="{{ $colorEyes }}">{{ $colorEyes->color_eyes }}</option>
+                                </div>
+                            </li>
+                            <li class="nav-item nav-link">
+                                <div class="cst-filter">
+                                    @foreach($furSizes as $furSize)
+                                        <label class="form-check-label">{{ $furSize->label }}</label>
+                                        <input class="form-check-input" type="radio" value="{{ $furSize->id }}" name="fur-size">
                                     @endforeach
-                                </select>
-                            </a>
-                        </li>
-                        <li class="nav-item nav-link">
-                            <div class="cst-filter form-check form-check-inline">
-                                @foreach($genders as $gender)
-                                    <label class="form-check-label">{{ $gender->label }}</label>
-                                    <input class="form-check-input" type="radio" {{ $gender->id }} name="gender">
-                                @endforeach
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <form action="{{ route('search') }}" method="GET" >
-                                    {{csrf_field()}}
-                                    <i class='fas fa-search search-race-icon'></i><input name="search" type="search" class="cst-filter" placeholder="Race...">
-                                </form>
-                            </a>
-                        </li>
-                        <li class="nav-item nav-link">
-                            <div class="cst-filter">
-                                <label class="form-check-label">Taille</label>
-                                <input class="form-check-input" name="size" type="range" min="0" max="2" value="">
-                            </div>
-                        </li>
-                        <li class="nav-item nav-link">
-                            <div class="cst-filter">
-                                <label class="form-check-label">Taille des poils</label>
-                                <input class="form-check-input" name="fur-size" type="range" min="0" max="2" value="">
-                            </div>
-                        </li>
-                        <li class="nav-item nav-link">
-                            <div class="cst-filter">
-                                <label class="form-check-label">Age</label>
-                                <input class="form-check-input" name="age" type="range" min="0" max="2" value="">
-                            </div>
-                        </li>
+                                </div>
+                            </li>
+                            <li class="nav-item nav-link">
+                                <div class="cst-filter">
+                                    @foreach($age as $age)
+                                        <label class="form-check-label">{{ $age->label }}</label>
+                                        <input class="form-check-input" type="radio" value="{{ $age->id }}" name="age">
+                                    @endforeach
+                                </div>
+                            </li>
+                            <li class="nav-item nav-link">
+                                <div class="text-center">
+                                    <button type="submit">Rechercher</button>
+                                    <button type="reset" value="Reset">Réinitialiser le formulaire</button>
+                                </div>
+                            </li>
+                        </form>
                     </ul>
                 </div>
             </nav>
-            <div class="container">
+            <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <a href="#" id="list-icon"class="btn cst-onglet"><i class="fas fa-list"></i></a><p id="cst-display-list">Afficher la liste des animaux recherchés</p>
-                        <a href="#" id="map-icon"class="btn cst-onglet"><i class="fas fa-map-marked"></i></a><p id="cst-display-map">Afficher les animaux recherchés à proximité de vous</p>
+                        <i class="fas fa-list cst-onglet" id="list-icon"></i>
+                        <i class="fas fa-map-marked cst-onglet" id="map-icon"></i>
                     </div>
                 </div>
-
                 <div class="container">
                     <div id="list-view">
                         <div class="row">
@@ -160,16 +156,12 @@
                         </div>
                     </div>
                     <div id="map-view">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <img src="http://placekitten.com/1140/500" alt="">
-                            </div>
-                        </div>
+
                     </div>
                     <div class="row">
                         <div class="col-md-12 cst-arrow">
-                            <a href="#"><i  class="fas fa-arrow-circle-down"></i></a>
-                            <a href="#top"><i  class="fas fa-arrow-circle-up"></i></a>
+                            <i class="fas fa-arrow-circle-down"></i>
+                            <i class="fas fa-arrow-circle-up"></i>
                         </div>
                     </div>
                 </div>

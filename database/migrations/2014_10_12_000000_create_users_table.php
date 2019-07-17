@@ -22,9 +22,11 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->text('address');
             $table->timestamp('last_connected')->nullable();
-            $table->timestamp('created_at');
             $table->unsignedMediumInteger('city_id_fk');
             $table->foreign('city_id_fk')->references('id')->on('cities');
+            $table->mediumInteger('city_zip_code_fk');
+            $table->foreign('city_zip_code_fk')->references('zip_code')->on('cities');
+            $table->timestamps();
         });
     }
 

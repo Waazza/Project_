@@ -73,7 +73,8 @@
     }
   }
 
-// CSS form/formInscriptions ---------------------------------------
+// CSS form/inscriptions ---------------------------------------
+
 .formInscriptions{
   margin-top: 20px;
   .section{
@@ -87,6 +88,25 @@
     }
   }
 
+}
+#marker {
+  height: 200px;
+  width: 200px;
+  z-index: 5;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 255, 0.2);
+}
+
+
+
+// media queries ----------------------------------------------------
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .formInscriptions{
+    .row{
+      display:flex;
+      flex-direction: column;
+    }
+  }
 }
 
 // CSS page card --------------------------------------
@@ -159,6 +179,12 @@ $border : 1px solid #ddd;
     display: none;
 }
 
+#map-view{
+  display: none;
+  height: 1000px;
+  width: 1000px;
+}
+
 .cst-onglet{
     margin: 50px 0;
     width: 50px;
@@ -180,7 +206,21 @@ $border : 1px solid #ddd;
     font-size: 52px;
 }
 
-// CSS page mon-compte/dashboard ----------------------------------------
+#map-view{
+
+  .marker{
+    height: 200px;
+    width: 200px;
+    z-index: 5;
+    border-radius: 50%;
+      &:hover{
+        background-color: rgba(0, 0, 255, 0.2);
+      }
+
+  }
+}
+
+// CSS page monCompte/dashboard ----------------------------------------
 
 .dash-row{
   margin: 0;
@@ -212,16 +252,7 @@ $border : 1px solid #ddd;
   }
 
 }
-// media queries ----------------------------------------------------
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-  .formInscriptions{
-    .row{
-      display:flex;
-      flex-direction: column;
-    }
-  }
 
-}
 .cst-nav{
   margin-bottom: 50px;
 }
@@ -237,9 +268,25 @@ $border : 1px solid #ddd;
                           rgba(100, 100, 100, 1)
           ) 1 100%;
 }
-#map-view{
+
+// CSS monCompte/addAnimal
+
+.tatooInput{
   display: none;
 }
+
+.dogRace{
+  display: none;
+}
+.catRace{
+  display: none;
+}
+.nacRace{
+  display: none;
+}
+
+// CSS Homepage
+
 .btn-container{
   display:flex;
   justify-content: center;
@@ -251,9 +298,7 @@ $border : 1px solid #ddd;
       color:dodgerblue;
   }
 }
-h1{
-  color:dodgerblue;
-}
+
 nav{
   margin-bottom: 1rem;
     display:flex;
@@ -278,30 +323,32 @@ nav{
     }
   }
 }
-.row {
-    .found-pets {
-      align-items: center;
-      justify-content: flex-start;
-      display:flex;
-      align-content: center;
-    .lost-pets{
-    }
-      align-items: center;
-      display:flex;
-      justify-content: flex-end;
-      align-content: center;
-    }
-      height: 20rem;
-    .btn{
-      width: 25rem;
-      font-size: 2rem;
-      border-radius: 15rem;
-      font-weight:bolder;
-      color:red;
-      opacity: 0.6;
-      background-color: silver;
-}
-    }
+
+//.row {
+//    .found-pets {
+//      align-items: center;
+//      justify-content: flex-start;
+//      display:flex;
+//      align-content: center;
+//    .lost-pets{
+//    }
+//      align-items: center;
+//      display:flex;
+//      justify-content: flex-end;
+//      align-content: center;
+//    }
+//      height: 20rem;
+//    .btn{
+//      width: 25rem;
+//      font-size: 2rem;
+//      border-radius: 15rem;
+//      font-weight:bolder;
+//      color:red;
+//      opacity: 0.6;
+//      background-color: silver;
+//}
+//    }
+
 .carousel{
   margin-bottom: 2rem;
   .carousel-item{

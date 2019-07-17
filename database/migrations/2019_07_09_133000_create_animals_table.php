@@ -17,7 +17,7 @@ class CreateAnimalsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('picture')->nullable();
-            $table->boolean('tatoo')->nullable();
+            $table->string('tatoo')->nullable();
             $table->boolean('microship')->nullable();
             $table->boolean('collar')->nullable();
             $table->text('comment')->nullable();
@@ -40,6 +40,7 @@ class CreateAnimalsTable extends Migration
             $table->foreign('gender_id_fk')->references('id')->on('genders');
             $table->foreign('age_id_fk')->references('id')->on('ages');
             $table->foreign('race_id_fk')->references('id')->on('races');
+            $table->timestamps();
         });
     }
 

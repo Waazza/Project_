@@ -20,14 +20,10 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-dark bg-info">
             <a class="navbar-brand" href="#">Animals</a>
-            <ul class="navbar-nav mr-auto">
-                <a class="nav-link" href="#">Accueil</a></li>
-                <li class="nav-item active">
-                <li class="nav-item">
-                <a class="nav-link" href="#">Liens</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Mon compte</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Autres</a></li>
-            </ul>
+            <a class="nav-link" href="#">Accueil</a>
+            <a class="nav-link" href="#">Liens</a>
+            <a class="nav-link" href="{{ action( 'MonCompteController@index' ) }}">Mon compte</a>
+            <a class="nav-link" href="#">Autres</a>
         </nav>
   </header>
     <div id="content">

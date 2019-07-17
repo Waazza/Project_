@@ -5,10 +5,12 @@
         <div class="container formAnimal">
             <div class="row">
                 <div class="col-6 picturInput">
-                    <label class="btn btn-block btn-primary img-fluid"> <input type="file" style="display: none;"></label>
-                        <div class="input-append date form_datetime">
-                            <input type="text" id="datepicker" readonly>
-                        </div>
+                    <label class="btn btn-block btn-primary img-fluid">
+                        <input type="file" style="display: none;">
+                    </label>
+                    <div class="input-append date form_datetime">
+                        <input type="text" id="datepicker" readonly>
+                    </div>
                 </div>
                 <div class="col-6 categoryInput">
                     <div class="form-group category" >
@@ -83,6 +85,9 @@
                     </div>
                 </div>
             </div>
+            <input type="text" hidden id="hiddenLong" name="long">
+            <input type="text" hidden id="hiddenLat" name="lat">
+            <button type="submit">Envoyer</button>
             <div>
                 <div id='map' style='width: 100%; height: 300px;'></div>
             </div>
