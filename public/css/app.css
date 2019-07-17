@@ -10731,6 +10731,24 @@ a.text-dark:focus {
   text-align: center;
 }
 
+<<<<<<< HEAD
+=======
+#marker {
+  height: 200px;
+  width: 200px;
+  z-index: 5;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 255, 0.2);
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .formInscriptions .row {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+>>>>>>> Loick
 .desc .desc-list {
   list-style: none;
   padding: 8px;
@@ -10771,6 +10789,15 @@ a.text-dark:focus {
   display: none;
 }
 
+<<<<<<< HEAD
+=======
+#map-view {
+  display: none;
+  height: 1000px;
+  width: 1000px;
+}
+
+>>>>>>> Loick
 .cst-onglet {
   margin: 50px 0;
   width: 50px;
@@ -10792,6 +10819,20 @@ a.text-dark:focus {
   font-size: 52px;
 }
 
+<<<<<<< HEAD
+=======
+#map-view .marker {
+  height: 200px;
+  width: 200px;
+  z-index: 5;
+  border-radius: 50%;
+}
+
+#map-view .marker:hover {
+  background-color: rgba(0, 0, 255, 0.2);
+}
+
+>>>>>>> Loick
 .dash-row {
   margin: 0;
 }
@@ -10818,6 +10859,7 @@ a.text-dark:focus {
   height: 100%;
 }
 
+<<<<<<< HEAD
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .formInscriptions .row {
     display: flex;
@@ -10825,6 +10867,8 @@ a.text-dark:focus {
   }
 }
 
+=======
+>>>>>>> Loick
 .cst-nav {
   margin-bottom: 50px;
 }
@@ -10837,7 +10881,23 @@ a.text-dark:focus {
      border-image: linear-gradient(to bottom, white, #646464) 1 100%;
 }
 
+<<<<<<< HEAD
 #map-view {
+=======
+.tatooInput {
+  display: none;
+}
+
+.dogRace {
+  display: none;
+}
+
+.catRace {
+  display: none;
+}
+
+.nacRace {
+>>>>>>> Loick
   display: none;
 }
 
@@ -10854,10 +10914,13 @@ a.text-dark:focus {
   color: dodgerblue;
 }
 
+<<<<<<< HEAD
 h1 {
   color: dodgerblue;
 }
 
+=======
+>>>>>>> Loick
 nav {
   margin-bottom: 1rem;
   display: flex;
@@ -10876,6 +10939,7 @@ nav .navbar {
   font-size: 3rem !important;
 }
 
+<<<<<<< HEAD
 .row {
   height: 20rem;
 }
@@ -10901,6 +10965,8 @@ nav .navbar {
   background-color: silver;
 }
 
+=======
+>>>>>>> Loick
 .carousel {
   margin-bottom: 2rem;
 }
