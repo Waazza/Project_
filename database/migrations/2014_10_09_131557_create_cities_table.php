@@ -19,7 +19,7 @@ class CreateCitiesTable extends Migration
               $table->string('name');
               $table->string('simple_name');
               $table->string('real_name');
-              $table->integer('zip_code');
+              $table->mediumInteger('zip_code')->index();
               $table->integer('num_INSEE');
               $table->string('district');
               $table->string('long');

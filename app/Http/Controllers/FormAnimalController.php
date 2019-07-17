@@ -26,10 +26,12 @@ class FormAnimalController extends Controller
         $colorEyes = ColorEyes::all();
         $furSizes = FurSize::all();
         $genders = Gender::all();
-        $races = Race::all();
         $sizes = Size::all();
         $status = Statu::all();
         $types = Type::all();
+        $dogs = Race::all()->where('type_id_fk', 1);
+        $cats = Race::all()->where('type_id_fk', 2);
+        $nacs = Race::all()->where('type_id_fk', 3);
 
         return view('forms/animals.index')
             ->with([
@@ -37,22 +39,20 @@ class FormAnimalController extends Controller
                 'colorEyes'   =>  $colorEyes,
                 'furSizes'   =>  $furSizes,
                 'genders'   =>  $genders,
-                'races'   =>  $races,
                 'sizes'   =>  $sizes,
                 'status'   =>  $status,
-                'types' => $types
+                'types' => $types,
+                'dogs'   =>  $dogs,
+                'cats'   =>  $cats,
+                'nacs'   =>  $nacs
             ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function addCaractéristique()
     {
-        //
+        
     }
+
 
     /**
      * Store a newly created resource in storage.

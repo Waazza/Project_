@@ -40,6 +40,7 @@ class CreateAnimalsTable extends Migration
             $table->foreign('gender_id_fk')->references('id')->on('genders');
             $table->foreign('age_id_fk')->references('id')->on('ages');
             $table->foreign('race_id_fk')->references('id')->on('races');
+            $table->timestamps();
         });
     }
 

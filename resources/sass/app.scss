@@ -1,11 +1,62 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// CSS Body/ master
+
+*{
+    html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+    }
+
+    .full-height {
+    height: 100vh;
+    }
+
+    .flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    }
+
+    .position-ref {
+    position: relative;
+    }
+
+    .top-right {
+        position: absolute;
+        right: 10px;
+        top: 18px;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    .title {
+        font-size: 84px;
+    }
+
+    .links > a {
+        color: #636b6f;
+        padding: 0 25px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: .1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .m-b-md {
+        margin-bottom: 30px;
+    }
+}
 
   // CSS form/animals ---------------------------------------
   .formAnimal{
@@ -42,8 +93,17 @@
         }
         .addCategory{
           width: 60%;
-        }
+        } 
       }
+        .dogRace{
+          display: none;
+        }
+        .catRace{
+          display: none;
+        }
+        .nacRace{
+          display: none;
+        }
     }
     .comment{
       margin: 0 auto;
@@ -67,13 +127,22 @@
         }
       }
     }
-    iframe{
-      height: 300px;
-      width: 100%;
-    }
-  }
+    .menuCaracteristique{
+        #hidden{
+            display: none;
+            position: absolute;
+            z-index: 99999;
 
-// CSS form/formInscriptions ---------------------------------------
+            tr{
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+        }
+    }
+    }
+
+// CSS form/inscriptions ---------------------------------------
 .formInscriptions{
   margin-top: 20px;
   .section{
@@ -84,6 +153,27 @@
 
     h3{
       text-align: center;
+    }
+  }
+
+}
+#marker {
+  height: 200px;
+  width: 200px;
+  z-index: 5;
+  //border: 1px solid black;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 255, 0.2);
+}
+
+
+
+// media queries ----------------------------------------------------
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .formInscriptions{
+    .row{
+      display:flex;
+      flex-direction: column;
     }
   }
 
@@ -124,7 +214,6 @@
 //    background:black;
 //    position:relative;
 //    box-shadow:0 0 5px 0 rgba(0,0,0,0.3);
-
 $border : 1px solid #ddd;
 
 .cst-bloc{
@@ -141,14 +230,15 @@ $border : 1px solid #ddd;
 
 .search-icon{
     position: absolute;
-    left: 30px;
-    top: 15px;
+    left: 50px;
+    top: 25px;
 }
 
 .cst-filter{
     width: 100%;
     padding: 12px 12px 12px 40px;
     border: $border;
+    background: #ffffff;
 }
 
 #cst-display-list{
@@ -157,6 +247,10 @@ $border : 1px solid #ddd;
 
 #cst-display-map{
     display: none;
+}
+
+#map-view{
+  display: none;
 }
 
 .cst-onglet{
@@ -180,7 +274,7 @@ $border : 1px solid #ddd;
     font-size: 52px;
 }
 
-// CSS page mon-compte/dashboard ----------------------------------------
+// CSS page monCompte/dashboard ----------------------------------------
 
 .dash-row{
   margin: 0;
@@ -212,13 +306,117 @@ $border : 1px solid #ddd;
   }
 
 }
-// media queries ----------------------------------------------------
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-  .formInscriptions{
-    .row{
-      display:flex;
-      flex-direction: column;
+
+.cst-nav{
+  margin-bottom: 50px;
+}
+.cstx-bg{
+  color: black;
+  border-width: 3px;
+  border-style: solid;
+  border-image:
+
+          linear-gradient(
+                          to bottom,
+                          white,
+                          rgba(100, 100, 100, 1)
+          ) 1 100%;
+}
+
+// CSS monCompte/addAnimal
+
+.tatooInput{
+  display: none;
+}
+
+.dogRace{
+  display: none;
+}
+.catRace{
+  display: none;
+}
+.nacRace{
+  display: none;
+}
+
+
+// CSS Homepage
+
+.btn-container{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+    .btn-submit{
+      border:1rem solid green;
+      font-weight: bolder;
+      font-size: 1.5rem;
+      color:dodgerblue;
+  }
+}
+
+nav{
+  margin-bottom: 1rem;
+    display:flex;
+  .navbar{
+    justify-content: space-between;
+    .navbar-brand{
+      .navbar-nav{
+          .nav-link{
+        .nav-item{
+          }
+      }
+        }
     }
   }
-
 }
+.controls-top{
+  justify-content: space-between;
+  display:flex;
+    .btn-floating{
+      font-size: 3rem!important;
+      .fa {
+    }
+  }
+}
+//.row {
+//    .found-pets {
+//      align-items: center;
+//      justify-content: flex-start;
+//      display:flex;
+//      align-content: center;
+//    .lost-pets{
+//    }
+//      align-items: center;
+//      display:flex;
+//      justify-content: flex-end;
+//      align-content: center;
+//    }
+//      height: 20rem;
+//    .btn{
+//      width: 25rem;
+//      font-size: 2rem;
+//      border-radius: 15rem;
+//      font-weight:bolder;
+//      color:red;
+//      opacity: 0.6;
+//      background-color: silver;
+//}
+//  }
+
+/*.carousel{
+  margin-bottom: 2rem;
+  .carousel-item{
+      width:100%;
+      box-sizing: border-box;
+      height:50%;
+      border: 1px solid black;
+      padding-left: 17rem;
+      padding-top: 2.5rem;
+      .col-12{
+        display:inline-block;
+        .card{
+          border:1px solid red;
+          }
+    }
+  }
+}*/

@@ -8,6 +8,6 @@ class MonCompteController extends Controller
 {
     public function index()
     {
-        return view('mon-compte.dashboard');
+        return view('monCompte.dashboard');
     }
 }
