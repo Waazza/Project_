@@ -169,6 +169,7 @@ module.exports = function xhrAdapter(config) {
       request = null;
     };
 
+<<<<<<< Updated upstream
     // Handle browser request cancellation (as opposed to a manual cancellation)
     request.onabort = function handleAbort() {
       if (!request) {
@@ -181,6 +182,8 @@ module.exports = function xhrAdapter(config) {
       request = null;
     };
 
+=======
+>>>>>>> Stashed changes
     // Handle low level network errors
     request.onerror = function handleError() {
       // Real errors are hidden from us by the browser
@@ -208,8 +211,13 @@ module.exports = function xhrAdapter(config) {
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
+<<<<<<< Updated upstream
         cookies.read(config.xsrfCookieName) :
         undefined;
+=======
+          cookies.read(config.xsrfCookieName) :
+          undefined;
+>>>>>>> Stashed changes
 
       if (xsrfValue) {
         requestHeaders[config.xsrfHeaderName] = xsrfValue;
@@ -296,7 +304,10 @@ module.exports = function xhrAdapter(config) {
 var utils = __webpack_require__(/*! ./utils */ "./node_modules/axios/lib/utils.js");
 var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/axios/lib/helpers/bind.js");
 var Axios = __webpack_require__(/*! ./core/Axios */ "./node_modules/axios/lib/core/Axios.js");
+<<<<<<< Updated upstream
 var mergeConfig = __webpack_require__(/*! ./core/mergeConfig */ "./node_modules/axios/lib/core/mergeConfig.js");
+=======
+>>>>>>> Stashed changes
 var defaults = __webpack_require__(/*! ./defaults */ "./node_modules/axios/lib/defaults.js");
 
 /**
@@ -326,7 +337,11 @@ axios.Axios = Axios;
 
 // Factory for creating new instances
 axios.create = function create(instanceConfig) {
+<<<<<<< Updated upstream
   return createInstance(mergeConfig(axios.defaults, instanceConfig));
+=======
+  return createInstance(utils.merge(defaults, instanceConfig));
+>>>>>>> Stashed changes
 };
 
 // Expose Cancel & CancelToken
@@ -475,11 +490,18 @@ module.exports = function isCancel(value) {
 "use strict";
 
 
+<<<<<<< Updated upstream
 var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
 var buildURL = __webpack_require__(/*! ../helpers/buildURL */ "./node_modules/axios/lib/helpers/buildURL.js");
 var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ "./node_modules/axios/lib/core/InterceptorManager.js");
 var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ "./node_modules/axios/lib/core/dispatchRequest.js");
 var mergeConfig = __webpack_require__(/*! ./mergeConfig */ "./node_modules/axios/lib/core/mergeConfig.js");
+=======
+var defaults = __webpack_require__(/*! ./../defaults */ "./node_modules/axios/lib/defaults.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
+var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ "./node_modules/axios/lib/core/InterceptorManager.js");
+var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ "./node_modules/axios/lib/core/dispatchRequest.js");
+>>>>>>> Stashed changes
 
 /**
  * Create a new instance of Axios
@@ -503,6 +525,7 @@ Axios.prototype.request = function request(config) {
   /*eslint no-param-reassign:0*/
   // Allow for axios('example/url'[, config]) a la fetch API
   if (typeof config === 'string') {
+<<<<<<< Updated upstream
     config = arguments[1] || {};
     config.url = arguments[0];
   } else {
@@ -511,6 +534,15 @@ Axios.prototype.request = function request(config) {
 
   config = mergeConfig(this.defaults, config);
   config.method = config.method ? config.method.toLowerCase() : 'get';
+=======
+    config = utils.merge({
+      url: arguments[0]
+    }, arguments[1]);
+  }
+
+  config = utils.merge(defaults, {method: 'get'}, this.defaults, config);
+  config.method = config.method.toLowerCase();
+>>>>>>> Stashed changes
 
   // Hook up interceptors middleware
   var chain = [dispatchRequest, undefined];
@@ -531,11 +563,14 @@ Axios.prototype.request = function request(config) {
   return promise;
 };
 
+<<<<<<< Updated upstream
 Axios.prototype.getUri = function getUri(config) {
   config = mergeConfig(this.defaults, config);
   return buildURL(config.url, config.params, config.paramsSerializer).replace(/^\?/, '');
 };
 
+=======
+>>>>>>> Stashed changes
 // Provide aliases for supported request methods
 utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
   /*eslint func-names:0*/
@@ -780,6 +815,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
   if (code) {
     error.code = code;
   }
+<<<<<<< Updated upstream
 
   error.request = request;
   error.response = response;
@@ -803,12 +839,17 @@ module.exports = function enhanceError(error, config, code, request, response) {
       code: this.code
     };
   };
+=======
+  error.request = request;
+  error.response = response;
+>>>>>>> Stashed changes
   return error;
 };
 
 
 /***/ }),
 
+<<<<<<< Updated upstream
 /***/ "./node_modules/axios/lib/core/mergeConfig.js":
 /*!****************************************************!*\
   !*** ./node_modules/axios/lib/core/mergeConfig.js ***!
@@ -872,6 +913,8 @@ module.exports = function mergeConfig(config1, config2) {
 
 /***/ }),
 
+=======
+>>>>>>> Stashed changes
 /***/ "./node_modules/axios/lib/core/settle.js":
 /*!***********************************************!*\
   !*** ./node_modules/axios/lib/core/settle.js ***!
@@ -893,7 +936,12 @@ var createError = __webpack_require__(/*! ./createError */ "./node_modules/axios
  */
 module.exports = function settle(resolve, reject, response) {
   var validateStatus = response.config.validateStatus;
+<<<<<<< Updated upstream
   if (!validateStatus || validateStatus(response.status)) {
+=======
+  // Note: status is not exposed by XDomainRequest
+  if (!response.status || !validateStatus || validateStatus(response.status)) {
+>>>>>>> Stashed changes
     resolve(response);
   } else {
     reject(createError(
@@ -966,6 +1014,7 @@ function setContentTypeIfUnset(headers, value) {
 
 function getDefaultAdapter() {
   var adapter;
+<<<<<<< Updated upstream
   // Only Node.JS has a process variable that is of [[Class]] process
   if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
     // For node use HTTP adapter
@@ -973,6 +1022,14 @@ function getDefaultAdapter() {
   } else if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
     adapter = __webpack_require__(/*! ./adapters/xhr */ "./node_modules/axios/lib/adapters/xhr.js");
+=======
+  if (typeof XMLHttpRequest !== 'undefined') {
+    // For browsers use XHR adapter
+    adapter = __webpack_require__(/*! ./adapters/xhr */ "./node_modules/axios/lib/adapters/xhr.js");
+  } else if (typeof process !== 'undefined') {
+    // For node use HTTP adapter
+    adapter = __webpack_require__(/*! ./adapters/http */ "./node_modules/axios/lib/adapters/xhr.js");
+>>>>>>> Stashed changes
   }
   return adapter;
 }
@@ -981,7 +1038,10 @@ var defaults = {
   adapter: getDefaultAdapter(),
 
   transformRequest: [function transformRequest(data, headers) {
+<<<<<<< Updated upstream
     normalizeHeaderName(headers, 'Accept');
+=======
+>>>>>>> Stashed changes
     normalizeHeaderName(headers, 'Content-Type');
     if (utils.isFormData(data) ||
       utils.isArrayBuffer(data) ||
@@ -1144,11 +1204,14 @@ module.exports = function buildURL(url, params, paramsSerializer) {
   }
 
   if (serializedParams) {
+<<<<<<< Updated upstream
     var hashmarkIndex = url.indexOf('#');
     if (hashmarkIndex !== -1) {
       url = url.slice(0, hashmarkIndex);
     }
 
+=======
+>>>>>>> Stashed changes
     url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
   }
 
@@ -1200,6 +1263,7 @@ module.exports = (
   utils.isStandardBrowserEnv() ?
 
   // Standard browser envs support document.cookie
+<<<<<<< Updated upstream
     (function standardBrowserEnv() {
       return {
         write: function write(name, value, expires, path, domain, secure) {
@@ -1244,6 +1308,52 @@ module.exports = (
         remove: function remove() {}
       };
     })()
+=======
+  (function standardBrowserEnv() {
+    return {
+      write: function write(name, value, expires, path, domain, secure) {
+        var cookie = [];
+        cookie.push(name + '=' + encodeURIComponent(value));
+
+        if (utils.isNumber(expires)) {
+          cookie.push('expires=' + new Date(expires).toGMTString());
+        }
+
+        if (utils.isString(path)) {
+          cookie.push('path=' + path);
+        }
+
+        if (utils.isString(domain)) {
+          cookie.push('domain=' + domain);
+        }
+
+        if (secure === true) {
+          cookie.push('secure');
+        }
+
+        document.cookie = cookie.join('; ');
+      },
+
+      read: function read(name) {
+        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+        return (match ? decodeURIComponent(match[3]) : null);
+      },
+
+      remove: function remove(name) {
+        this.write(name, '', Date.now() - 86400000);
+      }
+    };
+  })() :
+
+  // Non standard browser env (web workers, react-native) lack needed support.
+  (function nonStandardBrowserEnv() {
+    return {
+      write: function write() {},
+      read: function read() { return null; },
+      remove: function remove() {}
+    };
+  })()
+>>>>>>> Stashed changes
 );
 
 
@@ -1292,17 +1402,27 @@ module.exports = (
 
   // Standard browser envs have full support of the APIs needed to test
   // whether the request URL is of the same origin as current location.
+<<<<<<< Updated upstream
     (function standardBrowserEnv() {
       var msie = /(msie|trident)/i.test(navigator.userAgent);
       var urlParsingNode = document.createElement('a');
       var originURL;
 
       /**
+=======
+  (function standardBrowserEnv() {
+    var msie = /(msie|trident)/i.test(navigator.userAgent);
+    var urlParsingNode = document.createElement('a');
+    var originURL;
+
+    /**
+>>>>>>> Stashed changes
     * Parse a URL to discover it's components
     *
     * @param {String} url The URL to be parsed
     * @returns {Object}
     */
+<<<<<<< Updated upstream
       function resolveURL(url) {
         var href = url;
 
@@ -1332,11 +1452,43 @@ module.exports = (
       originURL = resolveURL(window.location.href);
 
       /**
+=======
+    function resolveURL(url) {
+      var href = url;
+
+      if (msie) {
+        // IE needs attribute set twice to normalize properties
+        urlParsingNode.setAttribute('href', href);
+        href = urlParsingNode.href;
+      }
+
+      urlParsingNode.setAttribute('href', href);
+
+      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
+      return {
+        href: urlParsingNode.href,
+        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
+        host: urlParsingNode.host,
+        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
+        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
+        hostname: urlParsingNode.hostname,
+        port: urlParsingNode.port,
+        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
+                  urlParsingNode.pathname :
+                  '/' + urlParsingNode.pathname
+      };
+    }
+
+    originURL = resolveURL(window.location.href);
+
+    /**
+>>>>>>> Stashed changes
     * Determine if a URL shares the same origin as the current location
     *
     * @param {String} requestURL The URL to test
     * @returns {boolean} True if URL shares the same origin, otherwise false
     */
+<<<<<<< Updated upstream
       return function isURLSameOrigin(requestURL) {
         var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
         return (parsed.protocol === originURL.protocol &&
@@ -1350,6 +1502,21 @@ module.exports = (
         return true;
       };
     })()
+=======
+    return function isURLSameOrigin(requestURL) {
+      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
+      return (parsed.protocol === originURL.protocol &&
+            parsed.host === originURL.host);
+    };
+  })() :
+
+  // Non standard browser envs (web workers, react-native) lack needed support.
+  (function nonStandardBrowserEnv() {
+    return function isURLSameOrigin() {
+      return true;
+    };
+  })()
+>>>>>>> Stashed changes
 );
 
 
@@ -1670,6 +1837,7 @@ function trim(str) {
  *
  * react-native:
  *  navigator.product -> 'ReactNative'
+<<<<<<< Updated upstream
  * nativescript
  *  navigator.product -> 'NativeScript' or 'NS'
  */
@@ -1677,6 +1845,11 @@ function isStandardBrowserEnv() {
   if (typeof navigator !== 'undefined' && (navigator.product === 'ReactNative' ||
                                            navigator.product === 'NativeScript' ||
                                            navigator.product === 'NS')) {
+=======
+ */
+function isStandardBrowserEnv() {
+  if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
+>>>>>>> Stashed changes
     return false;
   }
   return (
@@ -1758,6 +1931,7 @@ function merge(/* obj1, obj2, obj3, ... */) {
 }
 
 /**
+<<<<<<< Updated upstream
  * Function equal to merge with the difference being that no reference
  * to original objects is kept.
  *
@@ -1784,6 +1958,8 @@ function deepMerge(/* obj1, obj2, obj3, ... */) {
 }
 
 /**
+=======
+>>>>>>> Stashed changes
  * Extends object a by mutably adding to it the properties of object b.
  *
  * @param {Object} a The object to be extended
@@ -1821,7 +1997,10 @@ module.exports = {
   isStandardBrowserEnv: isStandardBrowserEnv,
   forEach: forEach,
   merge: merge,
+<<<<<<< Updated upstream
   deepMerge: deepMerge,
+=======
+>>>>>>> Stashed changes
   extend: extend,
   trim: trim
 };
@@ -16949,7 +17128,11 @@ return jQuery;
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
  * @license
  * Lodash <https://lodash.com/>
+<<<<<<< Updated upstream
  * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
+=======
+ * Copyright JS Foundation and other contributors <https://js.foundation/>
+>>>>>>> Stashed changes
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -16960,7 +17143,11 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
+<<<<<<< Updated upstream
   var VERSION = '4.17.13';
+=======
+  var VERSION = '4.17.11';
+>>>>>>> Stashed changes
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -19619,10 +19806,23 @@ return jQuery;
         value.forEach(function(subValue) {
           result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
         });
+<<<<<<< Updated upstream
       } else if (isMap(value)) {
         value.forEach(function(subValue, key) {
           result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
         });
+=======
+
+        return result;
+      }
+
+      if (isMap(value)) {
+        value.forEach(function(subValue, key) {
+          result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
+        });
+
+        return result;
+>>>>>>> Stashed changes
       }
 
       var keysFunc = isFull
@@ -20546,8 +20746,13 @@ return jQuery;
         return;
       }
       baseFor(source, function(srcValue, key) {
+<<<<<<< Updated upstream
         stack || (stack = new Stack);
         if (isObject(srcValue)) {
+=======
+        if (isObject(srcValue)) {
+          stack || (stack = new Stack);
+>>>>>>> Stashed changes
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
@@ -22364,7 +22569,11 @@ return jQuery;
       return function(number, precision) {
         number = toNumber(number);
         precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
+<<<<<<< Updated upstream
         if (precision && nativeIsFinite(number)) {
+=======
+        if (precision) {
+>>>>>>> Stashed changes
           // Shift with exponential notation to avoid floating-point issues.
           // See [MDN](https://mdn.io/round#Examples) for more details.
           var pair = (toString(number) + 'e').split('e'),
@@ -23547,7 +23756,11 @@ return jQuery;
     }
 
     /**
+<<<<<<< Updated upstream
      * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
+=======
+     * Gets the value at `key`, unless `key` is "__proto__".
+>>>>>>> Stashed changes
      *
      * @private
      * @param {Object} object The object to query.
@@ -23555,10 +23768,13 @@ return jQuery;
      * @returns {*} Returns the property value.
      */
     function safeGet(object, key) {
+<<<<<<< Updated upstream
       if (key === 'constructor' && typeof object[key] === 'function') {
         return;
       }
 
+=======
+>>>>>>> Stashed changes
       if (key == '__proto__') {
         return;
       }
@@ -27359,7 +27575,10 @@ return jQuery;
           }
           if (maxing) {
             // Handle invocations in a tight loop.
+<<<<<<< Updated upstream
             clearTimeout(timerId);
+=======
+>>>>>>> Stashed changes
             timerId = setTimeout(timerExpired, wait);
             return invokeFunc(lastCallTime);
           }
@@ -31746,12 +31965,18 @@ return jQuery;
       , 'g');
 
       // Use a sourceURL for easier debugging.
+<<<<<<< Updated upstream
       // The sourceURL gets injected into the source that's eval-ed, so be careful
       // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
       // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
       var sourceURL = '//# sourceURL=' +
         (hasOwnProperty.call(options, 'sourceURL')
           ? (options.sourceURL + '').replace(/[\r\n]/g, ' ')
+=======
+      var sourceURL = '//# sourceURL=' +
+        ('sourceURL' in options
+          ? options.sourceURL
+>>>>>>> Stashed changes
           : ('lodash.templateSources[' + (++templateCounter) + ']')
         ) + '\n';
 
@@ -31784,9 +32009,13 @@ return jQuery;
 
       // If `variable` is not specified wrap a with-statement around the generated
       // code to add the data object to the top of the scope chain.
+<<<<<<< Updated upstream
       // Like with sourceURL, we take care to not check the option's prototype,
       // as this configuration is a code injection vector.
       var variable = hasOwnProperty.call(options, 'variable') && options.variable;
+=======
+      var variable = options.variable;
+>>>>>>> Stashed changes
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
@@ -33991,11 +34220,18 @@ return jQuery;
     baseForOwn(LazyWrapper.prototype, function(func, methodName) {
       var lodashFunc = lodash[methodName];
       if (lodashFunc) {
+<<<<<<< Updated upstream
         var key = lodashFunc.name + '';
         if (!hasOwnProperty.call(realNames, key)) {
           realNames[key] = [];
         }
         realNames[key].push({ 'name': methodName, 'func': lodashFunc });
+=======
+        var key = (lodashFunc.name + ''),
+            names = realNames[key] || (realNames[key] = []);
+
+        names.push({ 'name': methodName, 'func': lodashFunc });
+>>>>>>> Stashed changes
       }
     });
 
@@ -49355,10 +49591,102 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+<<<<<<< Updated upstream
 
 var app = new Vue({
   el: '#app'
 }); // jQuerry carousel slider cards controller
+=======
+// const app = new Vue({
+//     el: '#app',
+// });
+
+$(function () {
+  if (window.location.href === 'http://project.test:8080') {// Check current page to select which script to run
+  } else if (window.location.href === 'http://project.test:8080/forms/animals') {
+    // Script MapBox init ---------------------------
+    mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
+
+    var _map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/waazza/cjxzueo0b0pz51cpewfnc822o',
+      zoom: 16,
+      center: [-0.5827, 44.8423]
+    }); // SSL Certificat needed ---------------------------
+    // let options = {
+    //     enableHighAccuracy: true,
+    //     timeout: 5000,
+    //     maximumAge: 0
+    // };
+    // function success(pos) {
+    //     let crd = pos.coords;
+    //
+    //     console.log('Your current position is:');
+    //     console.log(`Latitude : ${crd.latitude}`);
+    //     console.log(`Longitude: ${crd.longitude}`);
+    //     console.log(`More or less ${crd.accuracy} meters.`);
+    // }
+    //
+    // function error(err) {
+    //     console.warn(`ERROR(${err.code}): ${err.message}`);
+    // }
+    //
+    // navigator.geolocation.getCurrentPosition(success, error, options);
+    // Date picker script -----------------------
+
+
+    $("#datepicker").datepicker();
+  } else if (window.location.href === 'http://project.test:8080/list' || window.location.href === 'http://project.test:8080/list#') {
+    var _showMap = function _showMap() {
+      _mapView.style.display = "block";
+      _listView.style.display = "none";
+    };
+
+    var _showList = function _showList() {
+      _mapView.style.display = "none";
+      _listView.style.display = "block";
+    };
+
+    // Switch list/map view ---------------------------
+    var _listIcon = document.getElementById("list-icon");
+
+    var _mapIcon = document.getElementById("map-icon");
+
+    var _listView = document.getElementById("list-view");
+
+    var _mapView = document.getElementById("map-view");
+
+    _mapIcon.addEventListener("click", _showMap);
+
+    _listIcon.addEventListener("click", _showList);
+  }
+});
+var listIcon = document.getElementById("list-icon");
+var mapIcon = document.getElementById("map-icon");
+var listView = document.getElementById("list-view");
+var mapView = document.getElementById("map-view");
+mapView.style.display = "none";
+mapIcon.addEventListener("click", showMap);
+
+function showMap() {
+  mapView.style.display = "block";
+  listView.style.display = "none";
+}
+
+listIcon.addEventListener("click", showList);
+
+function showList() {
+  mapView.style.display = "none";
+  listView.style.display = "block";
+}
+
+$("#datepicker").datepicker();
+mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v11'
+}); // jQuerry carousel Homepage
+>>>>>>> Stashed changes
 
 $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
   var next = $(this).next();
@@ -49369,7 +49697,11 @@ $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
 
   next.children(':first-child').clone().appendTo($(this));
 
+<<<<<<< Updated upstream
   for (var i = 0; i < 0; i++) {
+=======
+  for (var i = 0; i < 1; i++) {
+>>>>>>> Stashed changes
     next = next.next();
 
     if (!next.length) {

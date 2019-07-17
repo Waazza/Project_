@@ -10644,6 +10644,206 @@ a.text-dark:focus {
   }
 }
 
+<<<<<<< Updated upstream
+=======
+.formAnimal {
+  margin-top: 5%;
+}
+
+.formAnimal .picturInput {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.formAnimal .picturInput .img-fluid {
+  width: 60%;
+  background-image: url(https://via.placeholder.com/150);
+  background-size: cover;
+  height: 250px;
+}
+
+.formAnimal .picturInput input {
+  background-image: url("/storage/calendar1.png");
+  background-position: right;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+.formAnimal .categoryInput {
+  padding: 0;
+}
+
+.formAnimal .categoryInput .category {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.formAnimal .categoryInput .category select,
+.formAnimal .categoryInput .category input {
+  width: 30%;
+}
+
+.formAnimal .categoryInput .category .addCategory {
+  width: 60%;
+}
+
+.formAnimal .comment {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.formAnimal .keepIt {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100% !important;
+  align-items: center;
+}
+
+.formAnimal .keepIt .checkRefuge {
+  display: flex;
+}
+
+.formAnimal .keepIt .checkRefuge .refuge {
+  width: 90%;
+}
+
+.formAnimal .keepIt .checkRefuge .day {
+  width: 25% !important;
+}
+
+.formAnimal iframe {
+  height: 300px;
+  width: 100%;
+}
+
+.formInscriptions {
+  margin-top: 20px;
+}
+
+.formInscriptions .section {
+  border: 3px solid #3f9ae5;
+  border-radius: 10px;
+  box-shadow: 8px 8px 12px #aaa;
+  padding: 10px;
+}
+
+.formInscriptions .section h3 {
+  text-align: center;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .formInscriptions .row {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.desc .desc-list {
+  list-style: none;
+  padding: 8px;
+}
+
+.cst-img-position {
+  margin: auto;
+}
+
+.cst-bloc {
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 2px #ddd;
+  margin: 20px 0;
+  padding: 15px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 50px;
+  top: 25px;
+}
+
+.cst-filter {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #ddd;
+  background: #ffffff;
+}
+
+#cst-display-list {
+  display: none;
+}
+
+#cst-display-map {
+  display: none;
+}
+
+#map-view {
+  display: none;
+}
+
+.cst-onglet {
+  margin: 50px 0;
+  width: 50px;
+  padding: 12px 12px 12px;
+  border: 1px solid #ddd;
+  background: #ffffff;
+}
+
+.cst-card {
+  border: 1px solid #ddd;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.cst-arrow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 52px;
+}
+
+.dash-row {
+  margin: 0;
+}
+
+.dash-top {
+  margin-bottom: 100px;
+}
+
+.card .img-card {
+  height: 250px;
+  background-image: url("/storage/cat.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card .img-trap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card .img-trap .img-thumb {
+  width: 100%;
+  height: 100%;
+}
+
+.cst-nav {
+  margin-bottom: 50px;
+}
+
+.cstx-bg {
+  color: black;
+  border-width: 3px;
+  border-style: solid;
+  -o-border-image: linear-gradient(to bottom, white, #646464) 1 100%;
+     border-image: linear-gradient(to bottom, white, #646464) 1 100%;
+}
+
+>>>>>>> Stashed changes
 .btn-container {
   display: flex;
   justify-content: center;
@@ -10651,6 +10851,7 @@ a.text-dark:focus {
 }
 
 .btn-container .btn-submit {
+<<<<<<< Updated upstream
   color: dodgerblue;
   border: 1rem solid green;
   font-weight: bolder;
@@ -10658,19 +10859,32 @@ a.text-dark:focus {
 }
 
 h1 {
+=======
+  border: 1rem solid green;
+  font-weight: bolder;
+  font-size: 1.5rem;
+>>>>>>> Stashed changes
   color: dodgerblue;
 }
 
 nav {
   margin-bottom: 1rem;
+<<<<<<< Updated upstream
 }
 
 nav .navbar {
   display: flex;
+=======
+  display: flex;
+}
+
+nav .navbar {
+>>>>>>> Stashed changes
   justify-content: space-between;
 }
 
 .controls-top {
+<<<<<<< Updated upstream
   display: flex;
   justify-content: space-between;
 }
@@ -10702,6 +10916,14 @@ nav .navbar {
   color: red;
   opacity: 0.6;
   background-color: silver;
+=======
+  justify-content: space-between;
+  display: flex;
+}
+
+.controls-top .btn-floating {
+  font-size: 3rem !important;
+>>>>>>> Stashed changes
 }
 
 .carousel {
@@ -10710,8 +10932,13 @@ nav .navbar {
 
 .carousel .carousel-item {
   width: 100%;
+<<<<<<< Updated upstream
   height: 50%;
   box-sizing: border-box;
+=======
+  box-sizing: border-box;
+  height: 50%;
+>>>>>>> Stashed changes
   border: 1px solid black;
   padding-left: 17rem;
   padding-top: 2.5rem;

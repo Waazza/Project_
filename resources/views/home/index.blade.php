@@ -2,6 +2,7 @@
 @section('content')
 
   <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
+<<<<<<< Updated upstream
 
   <!--Controls-->
   <div class="controls-top">
@@ -126,5 +127,56 @@
   </div>
 </div>
 
+=======
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-multi" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-multi" data-slide-to="1"></li>
+        <li data-target="#carousel-example-multi" data-slide-to="2"></li>
+      </ol>
+
+  <div class="container">
+    <div class="carousel-inner v-2" role="listbox">
+      @foreach($sliders as $animals)
+        <div id="animal-carousel"class="carousel-item {{ $loop->first ? 'active' : '' }}">
+          <div id="animal-column" class="col-12 col-md-4 ">
+            <div id="animal-card" class="card mb-4" >
+              <img class="card-img-top img-responsive" src="{{ $animals->picture }}" alt="">
+              <div id="animal-card-content" class="card-body">
+                <h4 id="animals-carousel-name" class="card-title font-weight-bold " >{{ $animals->name }}</h4>
+                <p id="animals-carousel-comment" class="card-text"> {{ $animals->race_id_fk }}</p>
+                <p id="animals-carousel-comment" class="card-text ">{{ $animals->comment }}</p>
+                <span class="AnimalStatus"> {{ $animals->status_id_fk }}</span>
+                <a href="{{ route('card') }}" class="btn btn-primary btn-md btn-rounded animal-btn-expand">Regarder cet animal</a>
+              </div>
+             </div>
+            </div>
+          </div>
+      @endforeach
+
+
+        </div>
+      </div>
+
+      <div class="controls-top">
+        <a class="btn-floating" href="#carousel-example-multi" data-slide="prev">
+          <i class="fa fa-chevron-circle-left"></i></a>
+        <a class="btn-floating" href="#carousel-example-multi" data-slide="next">
+          <i class="fa fa-chevron-circle-right"></i></a>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 lost-pets">
+          <a class="btn" href="{{ route('list') }}">Animaux Perdus </a>
+        </div>
+        <div class="col-lg-6 found-pets">
+          <a class="btn" href="{{ route('list') }}">Animaux Trouvés </a>
+        </div>
+      </div>
+    </div>
+>>>>>>> Stashed changes
 
 @endsection
