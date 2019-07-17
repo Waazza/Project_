@@ -49214,7 +49214,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 // });
 
 $(function () {
-  if (window.location.href === 'https://www.loocateme.fr') {
+  if (window.location.href === 'http://project.test' || window.location.href === 'https://www.loocateme.fr') {
     // Check current page to select which script to run
     $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
       var next = $(this).next();
@@ -49235,7 +49235,7 @@ $(function () {
         next.children(':first-child').clone().appendTo($(this));
       }
     });
-  } else if (window.location.href === 'https://www.loocateme.fr/forms/animals') {
+  } else if (window.location.href === 'http://project.test/lost' || window.location.href === 'https://www.loocateme.fr/lost' || window.location.href === 'http://project.test/found' || window.location.href === 'https://www.loocateme.fr/found') {
     var success = function success(pos) {
       var crd = pos.coords;
       console.log('Your current position is:');
@@ -49261,29 +49261,175 @@ $(function () {
       container: 'map',
       style: 'mapbox://styles/waazza/cjxzueo0b0pz51cpewfnc822o',
       zoom: 16,
-      center: [crd.latitude, crd.latitude]
+      center: [-0.5827, 44.8423],
+      scrollZoom: false,
+      doubleClickZoom: false
+    });
+    map.on('click', function (e) {
+      var pointer = e.lngLat;
+      var hiddenLong = document.getElementById('hiddenLong');
+      var hiddenLat = document.getElementById('hiddenLat');
+      hiddenLong.value = pointer.lng;
+      hiddenLat.value = pointer.lat;
+      var checkDiv = document.getElementById('marker');
+      var checkIcon = document.getElementById('center-marker');
+      console.log(hiddenLong.value, hiddenLat.value);
+
+      if (checkDiv !== null && checkIcon !== null) {
+        checkDiv.parentNode.removeChild(checkDiv);
+        checkIcon.parentNode.removeChild(checkIcon);
+      } // create DOM element for the marker
+
+
+      var el = document.createElement('div');
+      el.id = 'marker';
+      var icon = document.createElement('img');
+      icon.id = 'center-marker';
+      var logo = document.createAttribute('src');
+      logo.value = '/storage/locating.png';
+      icon.setAttributeNode(logo); // create the marker
+
+      new mapboxgl.Marker(el).setLngLat(e.lngLat).addTo(map);
+      new mapboxgl.Marker(icon).setLngLat(e.lngLat).addTo(map);
     }); // Date picker script -----------------------
 
     $("#datepicker").datepicker();
-  } else if (window.location.href === 'https://www.loocateme.fr/list') {
-    var showMap = function showMap() {
-      mapView.style.display = "block";
-      listView.style.display = "none";
-    };
+  } else if (window.location.href === 'http://project.test/list' || window.location.href === 'http://project.test/list#' || window.location.href === 'https://www.loocateme.fr/list') {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    var $filter = $('#filter');
+    $($filter).submit(function (e) {
+      e.preventDefault();
+      var $age = $('input[name="age"]:checked').length ? $('input[name="age"]:checked').val() : -1;
+      var $microship = $('input[name="microship"]:checked').length ? $('input[name="microship"]:checked').val() : -1;
+      var $collar = $('input[name="collar"]:checked').length ? $('input[name="collar"]:checked').val() : -1;
+      var $furSizes = $('input[name="fur-size"]:checked').length ? $('input[name="fur-size"]:checked').val() : -1;
+      var $genders = $('input[name="gender"]:checked').length ? $('input[name="gender"]:checked').val() : -1;
+      var $sizes = $('input[name="size"]:checked').length ? $('input[name="size"]:checked').val() : -1;
+      var $colors = $('select[name="color"] option:selected:not([disabled])').length ? $('select[name="color"] option:selected:not([disabled])').val() : -1;
+      var $colorsEyes = $('select[name="eyes-color"] option:selected:not([disabled])').length ? $('select[name="eyes-color"] option:selected:not([disabled])').val() : -1;
+      var $types = $('select[name="type"] option:selected:not([disabled])').length ? $('select[name="type"] option:selected:not([disabled])').val() : -1; // if(typeof(variable) != "undefined" && variable !== null) {
 
-    var showList = function showList() {
-      mapView.style.display = "none";
-      listView.style.display = "block";
-    };
+      $.ajax({
+        url: "abc",
+        method: "POST",
+        dataType: "json",
+        // data:   "age=" + $age +
+        //         "&microship=" + $microship +
+        //         "&collar=" + $collar +
+        //         "&colors=" + $colors +
+        //         "&colorsEyes=" + $colorsEyes +
+        //         "&furSizes=" + $furSizes +
+        //         "&genders=" + $genders +
+        //         "&sizes=" + $sizes +
+        //         "&types=" + $types,
+        data: JSON.stringify({
+          age: $age,
+          microship: $microship,
+          collar: $collar,
+          colors: $colors,
+          colorsEyes: $colorsEyes,
+          furSizes: $furSizes,
+          genders: $genders,
+          sizes: $sizes,
+          types: $types
+        })
+      }).done(function (data) {
+        console.log(data); // TODO :: Recréer les lignes d'animaux ici dans le conteneur
+      });
+    });
+    mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
 
-    // Switch list/map view ---------------------------
+    var _map = new mapboxgl.Map({
+      container: 'map-view',
+      style: 'mapbox://styles/waazza/cjxzueo0b0pz51cpewfnc822o',
+      zoom: 16,
+      center: [-0.5827, 44.8423],
+      scrollZoom: false,
+      doubleClickZoom: false
+    }); // Switch list/map view ---------------------------
+
+
     var listIcon = document.getElementById("list-icon");
     var mapIcon = document.getElementById("map-icon");
     var listView = document.getElementById("list-view");
     var mapView = document.getElementById("map-view");
-    mapIcon.addEventListener("click", showMap);
-    listIcon.addEventListener("click", showList);
-  } else if (window.location.href === 'https://www.loocateme.fr/monCompte/addAnimal') {
+    mapIcon.addEventListener("click", function () {
+      listView.style.display = "none";
+      mapView.style.display = "block";
+
+      _map.resize();
+    });
+    listIcon.addEventListener("click", function () {
+      mapView.style.display = "none";
+      listView.style.display = "block";
+    });
+
+    _map.on('load', function (e) {
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $.ajax({
+        url: "/ajaxMapList",
+        type: "POST",
+        dataType: "json"
+      }).done(function (data) {
+        for (var i = 0; i < data.length; i++) {
+          var loca = data[i].localisation;
+          var arrayLoca = loca.split(' ');
+          console.log(arrayLoca);
+          var el = document.createElement('div');
+          el.id = 'marker' + i;
+          el.className = 'marker';
+          var icon = document.createElement('img');
+          icon.id = 'center-marker' + i;
+          icon.className = 'center-marker';
+          var logo = document.createAttribute('src');
+          logo.value = '/storage/dog.png';
+          icon.setAttributeNode(logo);
+          new mapboxgl.Marker(el).setLngLat(arrayLoca).addTo(_map);
+          new mapboxgl.Marker(icon).setLngLat(arrayLoca).addTo(_map);
+        }
+      }); // let pointer = e.lngLat;
+      // let hiddenLong = document.getElementById('hiddenLong');
+      // let hiddenLat = document.getElementById('hiddenLat');
+      // hiddenLong.value = pointer.lng;
+      // hiddenLat.value = pointer.lat;
+      // let checkDiv = document.getElementById('marker');
+      // let checkIcon = document.getElementById('center-marker');
+      //
+      // console.log(hiddenLong.value, hiddenLat.value);
+      //
+      //
+      // if(checkDiv !== null && checkIcon !== null){
+      //     checkDiv.parentNode.removeChild(checkDiv);
+      //     checkIcon.parentNode.removeChild(checkIcon);
+      // }
+      //
+      // // create DOM element for the marker
+      // let el = document.createElement('div');
+      // el.id = 'marker';
+      // let icon = document.createElement('img');
+      // icon.id = 'center-marker';
+      // let logo = document.createAttribute('src');
+      // logo.value = '/storage/locating.png';
+      // icon.setAttributeNode(logo);
+      //
+      // // create the marker
+      // new mapboxgl.Marker(el)
+      //     .setLngLat(e.lngLat)
+      //     .addTo(map);
+      //
+      // new mapboxgl.Marker(icon)
+      //     .setLngLat(e.lngLat)
+      //     .addTo(map);
+    });
+  } else if (window.location.href === 'http://project.test/monCompte/addAnimal' || window.location.href === 'https://www.loocateme.fr') {
     var typeCheck = document.getElementById('type');
     typeCheck.addEventListener('input', function () {
       var type = typeCheck.value;
@@ -49464,8 +49610,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\Project_\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\Project_\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\Project\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\Project\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -33,7 +33,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 $(function() {
 
-    if ( window.location.href === 'https://www.loocateme.fr'){ // Check current page to select which script to run
+    if ( window.location.href === 'http://project.test' || window.location.href === 'https://www.loocateme.fr' ){ // Check current page to select which script to run
 
         $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function() {
             let next = $(this).next();
@@ -51,7 +51,7 @@ $(function() {
             }
         });
 
-    } else if ( window.location.href === 'https://www.loocateme.fr/forms/animals' ){
+    } else if ( window.location.href === 'http://project.test/lost' || window.location.href === 'https://www.loocateme.fr/lost' || window.location.href === 'http://project.test/found' || window.location.href === 'https://www.loocateme.fr/found'){
 
         // SSL Certificat needed ---------------------------
 
@@ -82,12 +82,121 @@ $(function() {
             container: 'map',
             style: 'mapbox://styles/waazza/cjxzueo0b0pz51cpewfnc822o',
             zoom: 16,
-            center: [crd.latitude, crd.latitude],
+            center: [-0.5827,44.8423],
+            scrollZoom: false,
+            doubleClickZoom: false,
         });
+
+        map.on('click', function(e) {
+
+            let pointer = e.lngLat;
+            let hiddenLong = document.getElementById('hiddenLong');
+            let hiddenLat = document.getElementById('hiddenLat');
+            hiddenLong.value = pointer.lng;
+            hiddenLat.value = pointer.lat;
+            let checkDiv = document.getElementById('marker');
+            let checkIcon = document.getElementById('center-marker');
+
+            console.log(hiddenLong.value, hiddenLat.value);
+
+
+            if(checkDiv !== null && checkIcon !== null){
+                checkDiv.parentNode.removeChild(checkDiv);
+                checkIcon.parentNode.removeChild(checkIcon);
+            }
+
+            // create DOM element for the marker
+            let el = document.createElement('div');
+            el.id = 'marker';
+            let icon = document.createElement('img');
+            icon.id = 'center-marker';
+            let logo = document.createAttribute('src');
+            logo.value = '/storage/locating.png';
+            icon.setAttributeNode(logo);
+
+            // create the marker
+            new mapboxgl.Marker(el)
+                .setLngLat(e.lngLat)
+                .addTo(map);
+
+            new mapboxgl.Marker(icon)
+                .setLngLat(e.lngLat)
+                .addTo(map);
+        });
+
 
         // Date picker script -----------------------
         $("#datepicker").datepicker();
-    } else if ( window.location.href === 'https://www.loocateme.fr/list' ){
+    } else if ( window.location.href === 'http://project.test/list' || window.location.href === 'http://project.test/list#' || window.location.href === 'https://www.loocateme.fr/list' ){
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+
+        let $filter = $('#filter');
+        $($filter).submit(function(e){
+            e.preventDefault();
+
+            let $age        = ($('input[name="age"]:checked').length) ? $('input[name="age"]:checked').val():-1;
+            let $microship  = ($('input[name="microship"]:checked').length) ? $('input[name="microship"]:checked').val():-1;
+            let $collar     = ($('input[name="collar"]:checked').length) ? $('input[name="collar"]:checked').val():-1;
+            let $furSizes   = ($('input[name="fur-size"]:checked').length) ? $('input[name="fur-size"]:checked').val():-1;
+            let $genders    = ($('input[name="gender"]:checked').length) ? $('input[name="gender"]:checked').val():-1;
+            let $sizes      = ($('input[name="size"]:checked').length) ? $('input[name="size"]:checked').val():-1;
+            let $colors     = ($('select[name="color"] option:selected:not([disabled])').length) ? $('select[name="color"] option:selected:not([disabled])') .val():-1;
+            let $colorsEyes = ($('select[name="eyes-color"] option:selected:not([disabled])').length) ? $('select[name="eyes-color"] option:selected:not([disabled])') .val():-1;
+            let $types      = ($('select[name="type"] option:selected:not([disabled])').length) ? $('select[name="type"] option:selected:not([disabled])').val():-1;
+
+            // if(typeof(variable) != "undefined" && variable !== null) {
+
+
+            $.ajax({
+                url: "abc",
+                method: "POST",
+                dataType: "json",
+                // data:   "age=" + $age +
+                //         "&microship=" + $microship +
+                //         "&collar=" + $collar +
+                //         "&colors=" + $colors +
+                //         "&colorsEyes=" + $colorsEyes +
+                //         "&furSizes=" + $furSizes +
+                //         "&genders=" + $genders +
+                //         "&sizes=" + $sizes +
+                //         "&types=" + $types,
+
+                data: JSON.stringify({
+                    age : $age,
+                    microship : $microship,
+                    collar : $collar,
+                    colors : $colors,
+                    colorsEyes : $colorsEyes,
+                    furSizes : $furSizes,
+                    genders : $genders,
+                    sizes : $sizes,
+                    types : $types,
+                }),
+
+            }).done(function (data){
+
+                console.log(data);
+
+
+                // TODO :: Recréer les lignes d'animaux ici dans le conteneur
+            });
+
+        });
+
+        mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
+        let map = new mapboxgl.Map({
+            container: 'map-view',
+            style: 'mapbox://styles/waazza/cjxzueo0b0pz51cpewfnc822o',
+            zoom: 16,
+            center: [-0.5827,44.8423],
+            scrollZoom: false,
+            doubleClickZoom: false,
+        });
 
         // Switch list/map view ---------------------------
 
@@ -97,18 +206,87 @@ $(function() {
         let listView = document.getElementById("list-view");
         let mapView = document.getElementById("map-view");
 
-        mapIcon.addEventListener("click", showMap);
-        function showMap(){
-            mapView.style.display = "block";
+        mapIcon.addEventListener("click", function(){
             listView.style.display = "none";
-        }
+            mapView.style.display = "block";
+            map.resize();
+        });
 
-        listIcon.addEventListener("click", showList);
-        function showList(){
+        listIcon.addEventListener("click", function (){
             mapView.style.display = "none";
             listView.style.display = "block";
-        }
-    }else if(  window.location.href === 'https://www.loocateme.fr/monCompte/addAnimal' ) {
+        });
+
+        map.on('load', function(e) {
+            $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+
+            $.ajax({
+                url: "/ajaxMapList",
+                type: "POST",
+                dataType: "json",
+            }).done(function (data){
+                for (let i = 0; i < data.length; i++){
+                    let loca = data[i].localisation;
+                    let arrayLoca = loca.split(' ');
+                    console.log(arrayLoca);
+
+                    let el = document.createElement('div');
+                    el.id = 'marker' + i;
+                    el.className = 'marker';
+                    let icon = document.createElement('img');
+                    icon.id = 'center-marker' + i;
+                    icon.className = 'center-marker';
+                    let logo = document.createAttribute('src');
+                    logo.value = '/storage/dog.png';
+                    icon.setAttributeNode(logo);
+
+                    new mapboxgl.Marker(el)
+                        .setLngLat(arrayLoca)
+                        .addTo(map);
+
+                    new mapboxgl.Marker(icon)
+                        .setLngLat(arrayLoca)
+                        .addTo(map);
+                }
+            });
+            // let pointer = e.lngLat;
+            // let hiddenLong = document.getElementById('hiddenLong');
+            // let hiddenLat = document.getElementById('hiddenLat');
+            // hiddenLong.value = pointer.lng;
+            // hiddenLat.value = pointer.lat;
+            // let checkDiv = document.getElementById('marker');
+            // let checkIcon = document.getElementById('center-marker');
+            //
+            // console.log(hiddenLong.value, hiddenLat.value);
+            //
+            //
+            // if(checkDiv !== null && checkIcon !== null){
+            //     checkDiv.parentNode.removeChild(checkDiv);
+            //     checkIcon.parentNode.removeChild(checkIcon);
+            // }
+            //
+            // // create DOM element for the marker
+            // let el = document.createElement('div');
+            // el.id = 'marker';
+            // let icon = document.createElement('img');
+            // icon.id = 'center-marker';
+            // let logo = document.createAttribute('src');
+            // logo.value = '/storage/locating.png';
+            // icon.setAttributeNode(logo);
+            //
+            // // create the marker
+            // new mapboxgl.Marker(el)
+            //     .setLngLat(e.lngLat)
+            //     .addTo(map);
+            //
+            // new mapboxgl.Marker(icon)
+            //     .setLngLat(e.lngLat)
+            //     .addTo(map);
+        });
+
+
+
+    }else if(  window.location.href === 'http://project.test/monCompte/addAnimal' || window.location.href === 'https://www.loocateme.fr' ) {
 
         let typeCheck = document.getElementById('type');
 

@@ -71,8 +71,14 @@ class AddAnimalController extends Controller
         if (!is_null($request->nacRace)){
             $animal->race_id_fk = $race[0]->id;
         }
+        if(!is_null($request->long) && !is_null($request->lat)){
+            $animal->localisation = implode(" ", [$request->long, $request->lat]);
+        }
 
         $animal->save();
+
+        $animal = Animal::all();
+        return view('list.index')->with('animals', $animal);
 
 
     }

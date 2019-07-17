@@ -85,6 +85,9 @@
                     </div>
                 </div>
             </div>
+            <input type="text" hidden id="hiddenLong" name="long">
+            <input type="text" hidden id="hiddenLat" name="lat">
+            <button type="submit">Envoyer</button>
             <div>
                 <div id='map' style='width: 100%; height: 300px;'></div>
             </div>

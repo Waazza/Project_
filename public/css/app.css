@@ -10731,6 +10731,14 @@ a.text-dark:focus {
   text-align: center;
 }
 
+#marker {
+  height: 200px;
+  width: 200px;
+  z-index: 5;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 255, 0.2);
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .formInscriptions .row {
     display: flex;
@@ -10780,6 +10788,8 @@ a.text-dark:focus {
 
 #map-view {
   display: none;
+  height: 1000px;
+  width: 1000px;
 }
 
 .cst-onglet {
@@ -10801,6 +10811,17 @@ a.text-dark:focus {
   flex-wrap: wrap;
   justify-content: center;
   font-size: 52px;
+}
+
+#map-view .marker {
+  height: 200px;
+  width: 200px;
+  z-index: 5;
+  border-radius: 50%;
+}
+
+#map-view .marker:hover {
+  background-color: rgba(0, 0, 255, 0.2);
 }
 
 .dash-row {
