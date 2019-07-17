@@ -7,9 +7,7 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// CSS form/animals ---------------------------------------
-
-body{
+  // CSS form/animals ---------------------------------------
   .formAnimal{
     margin-top: 5%;
 
@@ -74,6 +72,32 @@ body{
       width: 100%;
     }
   }
+
+// CSS form/inscriptions ---------------------------------------
+.formInscriptions{
+  margin-top: 20px;
+  .section{
+    border: 3px solid #3f9ae5;
+    border-radius: 10px;
+    box-shadow: 8px 8px 12px #aaa;
+    padding: 10px;
+
+    h3{
+      text-align: center;
+    }
+  }
+
+}
+
+// media queries ----------------------------------------------------
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .formInscriptions{
+    .row{
+      display:flex;
+      flex-direction: column;
+    }
+  }
+
 }
 
 // CSS page card --------------------------------------
@@ -111,7 +135,6 @@ body{
 //    background:black;
 //    position:relative;
 //    box-shadow:0 0 5px 0 rgba(0,0,0,0.3);
-
 $border : 1px solid #ddd;
 
 .cst-bloc{
@@ -128,14 +151,15 @@ $border : 1px solid #ddd;
 
 .search-icon{
     position: absolute;
-    left: 30px;
-    top: 15px;
+    left: 50px;
+    top: 25px;
 }
 
 .cst-filter{
     width: 100%;
     padding: 12px 12px 12px 40px;
     border: $border;
+    background: #ffffff;
 }
 
 #cst-display-list{
@@ -171,23 +195,7 @@ $border : 1px solid #ddd;
     font-size: 52px;
 }
 
-// CSS page mon-compte/dashboard ----------------------------------------
-
-.cst-nav{
-  margin-bottom: 50px;
-}
-
-.cstx-bg{
-  color: black;
-  border-width: 3px;
-  border-style: solid;
-  border-image:
-          linear-gradient(
-                          to bottom,
-                          white,
-                          rgba(100, 100, 100, 1)
-          ) 1 100%;
-}
+// CSS page monCompte/dashboard ----------------------------------------
 
 .dash-row{
   margin: 0;
@@ -219,3 +227,116 @@ $border : 1px solid #ddd;
   }
 
 }
+
+.cst-nav{
+  margin-bottom: 50px;
+}
+.cstx-bg{
+  color: black;
+  border-width: 3px;
+  border-style: solid;
+  border-image:
+
+          linear-gradient(
+                          to bottom,
+                          white,
+                          rgba(100, 100, 100, 1)
+          ) 1 100%;
+}
+
+// CSS monCompte/addAnimal
+
+.tatooInput{
+  display: none;
+}
+
+.dogRace{
+  display: none;
+}
+.catRace{
+  display: none;
+}
+.nacRace{
+  display: none;
+}
+
+
+// CSS Homepage
+
+.btn-container{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+    .btn-submit{
+      border:1rem solid green;
+      font-weight: bolder;
+      font-size: 1.5rem;
+      color:dodgerblue;
+  }
+}
+
+nav{
+  margin-bottom: 1rem;
+    display:flex;
+  .navbar{
+    justify-content: space-between;
+    .navbar-brand{
+      .navbar-nav{
+          .nav-link{
+        .nav-item{
+          }
+      }
+        }
+    }
+  }
+}
+.controls-top{
+  justify-content: space-between;
+  display:flex;
+    .btn-floating{
+      font-size: 3rem!important;
+      .fa {
+    }
+  }
+}
+//.row {
+//    .found-pets {
+//      align-items: center;
+//      justify-content: flex-start;
+//      display:flex;
+//      align-content: center;
+//    .lost-pets{
+//    }
+//      align-items: center;
+//      display:flex;
+//      justify-content: flex-end;
+//      align-content: center;
+//    }
+//      height: 20rem;
+//    .btn{
+//      width: 25rem;
+//      font-size: 2rem;
+//      border-radius: 15rem;
+//      font-weight:bolder;
+//      color:red;
+//      opacity: 0.6;
+//      background-color: silver;
+//}
+//    }
+.carousel{
+  margin-bottom: 2rem;
+  .carousel-item{
+      width:100%;
+      box-sizing: border-box;
+      height:50%;
+      border: 1px solid black;
+      padding-left: 17rem;
+      padding-top: 2.5rem;
+      .col-12{
+        display:inline-block;
+        .card{
+          border:1px solid red;
+        }
+      }
+}
+  }

@@ -33,9 +33,48 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 $(function() {
 
-    if ( window.location.href === 'http://project.test:8080'){ // Check current page to select which script to run
+    if ( window.location.href === 'https://www.loocateme.fr'){ // Check current page to select which script to run
 
-    } else if ( window.location.href === 'http://project.test:8080/forms/animals' ){
+        $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function() {
+            let next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (let i = 0; i < 0; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+
+    } else if ( window.location.href === 'https://www.loocateme.fr/forms/animals' ){
+
+        // SSL Certificat needed ---------------------------
+
+        let options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
+
+        function success(pos) {
+            let crd = pos.coords;
+
+            console.log('Your current position is:');
+            console.log(`Latitude : ${crd.latitude}`);
+            console.log(`Longitude: ${crd.longitude}`);
+            console.log(`More or less ${crd.accuracy} meters.`);
+        }
+
+        function error(err) {
+            console.warn(`ERROR(${err.code}): ${err.message}`);
+        }
+
+        navigator.geolocation.getCurrentPosition(success, error, options);
 
         // Script MapBox init ---------------------------
         mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
@@ -43,39 +82,12 @@ $(function() {
             container: 'map',
             style: 'mapbox://styles/waazza/cjxzueo0b0pz51cpewfnc822o',
             zoom: 16,
-            center: [-0.5827,44.8423],
+            center: [crd.latitude, crd.latitude],
         });
-
-
-        // SSL Certificat needed ---------------------------
-
-        // let options = {
-        //     enableHighAccuracy: true,
-        //     timeout: 5000,
-        //     maximumAge: 0
-        // };
-
-
-
-        // function success(pos) {
-        //     let crd = pos.coords;
-        //
-        //     console.log('Your current position is:');
-        //     console.log(`Latitude : ${crd.latitude}`);
-        //     console.log(`Longitude: ${crd.longitude}`);
-        //     console.log(`More or less ${crd.accuracy} meters.`);
-        // }
-        //
-        // function error(err) {
-        //     console.warn(`ERROR(${err.code}): ${err.message}`);
-        // }
-        //
-        // navigator.geolocation.getCurrentPosition(success, error, options);
-
 
         // Date picker script -----------------------
         $("#datepicker").datepicker();
-    } else if ( window.location.href === 'http://project.test:8080/list' ||  window.location.href === 'http://project.test:8080/list#' ){
+    } else if ( window.location.href === 'https://www.loocateme.fr/list' ){
 
         // Switch list/map view ---------------------------
 
@@ -96,5 +108,42 @@ $(function() {
             mapView.style.display = "none";
             listView.style.display = "block";
         }
+    }else if(  window.location.href === 'https://www.loocateme.fr/monCompte/addAnimal' ) {
+
+        let typeCheck = document.getElementById('type');
+
+        typeCheck.addEventListener('input', function(){
+            let type = typeCheck.value;
+            let dogDisplay = document.getElementById('dogRace');
+            let catDisplay = document.getElementById('catRace');
+            let nacDisplay = document.getElementById('nacRace');
+            if (type == 1){
+                dogDisplay.style.display = 'flex';
+                catDisplay.style.display = 'none';
+                nacDisplay.style.display = 'none';
+            }else if(type == 2){
+                catDisplay.style.display = 'flex';
+                dogDisplay.style.display = 'none';
+                nacDisplay.style.display = 'none';
+            }else if(type == 3){
+                nacDisplay.style.display = 'flex';
+                dogDisplay.style.display = 'none';
+                catDisplay.style.display = 'none';
+            }
+        });
+
+        let tatooCheck = document.getElementsByName('checkTatoo');
+
+        tatooCheck[0].addEventListener('click', function(){
+            let tatooInput = document.getElementById('tatooInput');
+            tatooInput.style.display = 'flex';
+        });
+
+        tatooCheck[1].addEventListener('click', function(){
+            let tatooInput = document.getElementById('tatooInput');
+            tatooInput.style.display = 'none';
+        });
+
+
     }
 });

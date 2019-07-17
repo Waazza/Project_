@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
+{{--    {{ dd($animal) }}--}}
 <div class="container-fluid">
     <div class="container">
         <div class="row">
@@ -17,7 +18,7 @@
                                 Perdu le : {{-- {{ $status->lost_at }}--}}
                             </li>
                             <li class="desc-list">
-                               Nom : {{-- {{ $animal->name }}--}}
+                               Nom :  {{ $animal->name }}
                             </li>
                             <li class="desc-list">
                                 Animal : {{--{{ $types->label }}--}}

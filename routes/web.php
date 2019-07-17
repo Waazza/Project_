@@ -12,11 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
 Route::get('/forms/animals', 'FormAnimalController@index');
+Route::get('/forms/signup', 'FormInscriController@index');
 
-Route::get('/mon-compte/dashboard', 'MonCompteController@index');
+Route::get('/monCompte/dashboard', 'MonCompteController@index');
+Route::get('/monCompte/addAnimal', 'MonCompteController@form');
+
+Route::post('/monCompte/addAnimal', 'AddAnimalController@store');
 
 Route::get('/card', function(){
     return view('card.index');
@@ -29,4 +33,9 @@ Route::get('/list', function(){
 Route::get('/card', 'CardController@index');
 
 Route::get('/list', 'ListController@index');
+Route::get('/search', 'ListController@search')->name('search');
+Route::get('/color', 'ListController@filterColor')->name('color');
 
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('home', 'HomeController');

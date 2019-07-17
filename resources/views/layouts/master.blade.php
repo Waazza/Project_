@@ -17,7 +17,15 @@
     @yield('scripts-header')
 </head>
 <body>
-
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-info">
+            <a class="navbar-brand" href="#">Animals</a>
+            <a class="nav-link" href="#">Accueil</a>
+            <a class="nav-link" href="#">Liens</a>
+            <a class="nav-link" href="{{ action( 'MonCompteController@index' ) }}">Mon compte</a>
+            <a class="nav-link" href="#">Autres</a>
+        </nav>
+  </header>
     <div id="content">
         @yield('content')
     </div>
@@ -35,3 +43,4 @@
 
 </body>
 </html>
+

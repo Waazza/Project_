@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -81,7 +81,11 @@
 
             <div class="content">
                 <div class="links">
-                    <a href="/forms/animals">Formulaire !</a>
+                    <a href="/forms/animals">Formulaire</a>
+                    <a href="/forms/inscriptions">Inscritpion</a>
+                    <a href="/list">List</a>
+                    <a href="/mon-compte">Mon Compte</a>
+                    <a href="/card">Card</a>
                 </div>
             </div>
         </div>
