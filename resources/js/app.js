@@ -27,26 +27,221 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
+// const app = new Vue({
+//     el: '#app',
+// });
+
+$(function () {
+
+    if ( window.location.href === 'http://project.test'){ // Check current page to select which script to run
+
+        $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function() {
+            let next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (let i = 0; i < 0; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+
+    } else if ( window.location.href === 'http://project.test/lost' ||  window.location.href === 'http://project.test/found' ){
+        // SSL Certificat needed ---------------------------​
+        let options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0,
+        };
+
+        function success(pos) {
+            let crd = pos.coords;
+
+            console.log('Your current position is:');
+            console.log(`Latitude : ${crd.latitude}`);
+            console.log(`Longitude: ${crd.longitude}`);
+            console.log(`More or less ${crd.accuracy} meters.`);
+        }
+        function error(err) {
+            console.warn(`ERROR(${err.code}): ${err.message}`);
+        }
+        navigator.geolocation.getCurrentPosition(success, error, options);
+        // Script MapBox init ---------------------------
+        mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
+        let map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/waazza/cjxzueo0b0pz51cpewfnc822o',
+            zoom: 16,
+            center: [-0.5827,44.8423],
+            scrollZoom: false,
+            doubleClickZoom: false,
+        });
+        map.on('click', function(e) {
+            let pointer = e.lngLat;
+            let hiddenLong = document.getElementById('hiddenLong');
+            let hiddenLat = document.getElementById('hiddenLat');
+            hiddenLong.value = pointer.lng;
+            hiddenLat.value = pointer.lat;
+            let checkDiv = document.getElementById('marker');
+            let checkIcon = document.getElementById('center-marker');
+
+            console.log(hiddenLong.value, hiddenLat.value);
+
+            if(checkDiv !== null && checkIcon !== null){
+                checkDiv.parentNode.removeChild(checkDiv);
+                checkIcon.parentNode.removeChild(checkIcon);
+            }
+            // create DOM element for the marker
+            let el = document.createElement('div');
+            el.id = 'marker';
+            let icon = document.createElement('img');
+            icon.id = 'center-marker';
+            let logo = document.createAttribute('src');
+            logo.value = '/storage/locating.png';
+            icon.setAttributeNode(logo);
+
+            // create the marker
+            new mapboxgl.Marker(el)
+                .setLngLat(e.lngLat)
+                .addTo(map);
+
+            new mapboxgl.Marker(icon)
+                .setLngLat(e.lngLat)
+                .addTo(map);
+        });
+        // Display block add caracteristique button
+        let btn = document.getElementById('menuCaracteristique');
+
+        btn.addEventListener("click", function () {
+            let hide = document.getElementById('hidden');
+            if (hide.style.display === "none") {
+                hide.style.display = "block"
+            }else {
+                hide.style.display = "none"
+            }
+        });
+        // Race choice on type
+        let typeCheck = document.getElementById('type');
+
+        typeCheck.addEventListener('input', function () {
+            let type = typeCheck.value;
+            let dogDisplay = document.getElementById('dogRace');
+            let catDisplay = document.getElementById('catRace');
+            let nacDisplay = document.getElementById('nacRace');
+            if (type == 1) {
+                dogDisplay.style.display = 'flex';
+                catDisplay.style.display = 'none';
+                nacDisplay.style.display = 'none';
+            } else if (type == 2) {
+                catDisplay.style.display = 'flex';
+                dogDisplay.style.display = 'none';
+                nacDisplay.style.display = 'none';
+            } else if (type == 3) {
+                nacDisplay.style.display = 'flex';
+                dogDisplay.style.display = 'none';
+                catDisplay.style.display = 'none';
+            } else if (type == 0) {
+                nacDisplay.style.display = 'none';
+                dogDisplay.style.display = 'none';
+                catDisplay.style.display = 'none';
+            }
+        });
+
+        // Add input caracteristique on click
+
+
+
+        // Date picker script -----------------------
+        $("#datepicker").datepicker();
+    } else if ( window.location.href === 'http://project.test/list' ||  window.location.href === 'http://project.test/list#' ){
+
+        // Switch list/map view ---------------------------
+
+        let listIcon = document.getElementById("list-icon");
+        let mapIcon = document.getElementById("map-icon");
+
+        let listView = document.getElementById("list-view");
+        let mapView = document.getElementById("map-view");
+
+        mapIcon.addEventListener("click", showMap);
+        function showMap(){
+            mapView.style.display = "block";
+            listView.style.display = "none";
+        }
+
+        listIcon.addEventListener("click", showList);
+        function showList(){
+            mapView.style.display = "none";
+            listView.style.display = "block";
+        }
+    }else if(  window.location.href === 'http://project.test/monCompte/addAnimal' ) {
+
+        let typeCheck = document.getElementById('type');
+
+        typeCheck.addEventListener('input', function(){
+            let type = typeCheck.value;
+            let dogDisplay = document.getElementById('dogRace');
+            let catDisplay = document.getElementById('catRace');
+            let nacDisplay = document.getElementById('nacRace');
+            if (type == 1){
+                dogDisplay.style.display = 'flex';
+                catDisplay.style.display = 'none';
+                nacDisplay.style.display = 'none';
+            }else if(type == 2){
+                catDisplay.style.display = 'flex';
+                dogDisplay.style.display = 'none';
+                nacDisplay.style.display = 'none';
+            }else if(type == 3){
+                nacDisplay.style.display = 'flex';
+                dogDisplay.style.display = 'none';
+                catDisplay.style.display = 'none';
+            }
+        });
+
+        let tatooCheck = document.getElementsByName('checkTatoo');
+
+        tatooCheck[0].addEventListener('click', function(){
+            let tatooInput = document.getElementById('tatooInput');
+            tatooInput.style.display = 'flex';
+        });
+
+        tatooCheck[1].addEventListener('click', function(){
+            let tatooInput = document.getElementById('tatooInput');
+            tatooInput.style.display = 'none';
+        });
+
+
+    }else if (window.location.href === 'http://project.test/forms/inscriptions' ){
+        // Ajax selection de ville -----------------------
+        $("#zipCode").on("input", function () {
+            $zipCode = $("#zipCode");
+            if(zipCode.value.length ==  5) {
+                $.ajaxSetup({
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')} });
+                $.ajax({
+                    type: 'POST',
+                    url: '/ajaxZipCode',
+                    data: 'zipCodeCities=' + zipCode.value,
+                })
+                    .always(function (data) {
+                        let cities = data.city;
+                        for (let i = 0; i < cities.length; i++) {
+                            let select = document.getElementById('selectCity');
+                            let option = document.createElement('option')
+                            option.classList.add('city');
+                            option.setAttribute('value', cities[i].name);
+                            option.text = cities[i].name;
+                            select.add(option);
+                        }
+                    });
+            } else {
+                $('.city').remove();
+            }
+        })
+    }
 });
-
-var listIcon = document.getElementById("list-icon");
-var mapIcon = document.getElementById("map-icon");
-
-var listView = document.getElementById("list-view");
-var mapView = document.getElementById("map-view");
-
-mapView.style.display = "none";
-
-mapIcon.addEventListener("click", showMap);
-function showMap(){
-    mapView.style.display = "block";
-    listView.style.display = "none";
-}
-
-listIcon.addEventListener("click", showList);
-function showList(){
-    mapView.style.display = "none";
-    listView.style.display = "block";
-}

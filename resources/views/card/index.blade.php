@@ -18,7 +18,7 @@
                                 Perdu le : {{-- {{ $status->lost_at }}--}}
                             </li>
                             <li class="desc-list">
-                               Nom :  {{ $animal->name }}
+                               Nom : {{-- {{ $animal->name }}--}}
                             </li>
                             <li class="desc-list">
                                 Animal : {{--{{ $types->label }}--}}
