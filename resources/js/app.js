@@ -31,9 +31,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 //     el: '#app',
 // });
 
-$(function () {
 
-    if ( window.location.href === 'http://project.test'){ // Check current page to select which script to run
+$(function() {
+
+    if ( window.location.href === 'http://project.test' || window.location.href === 'https://www.loocateme.fr' ){ // Check current page to select which script to run
 
         $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function() {
             let next = $(this).next();
@@ -51,12 +52,14 @@ $(function () {
             }
         });
 
-    } else if ( window.location.href === 'http://project.test/lost' ||  window.location.href === 'http://project.test/found' ){
-        // SSL Certificat needed ---------------------------​
+    } else if ( window.location.href === 'http://project.test/lost' || window.location.href === 'https://www.loocateme.fr/lost' || window.location.href === 'http://project.test/found' || window.location.href === 'https://www.loocateme.fr/found'){
+
+        // SSL Certificat needed ---------------------------
+
         let options = {
             enableHighAccuracy: true,
             timeout: 5000,
-            maximumAge: 0,
+            maximumAge: 0
         };
 
         function success(pos) {
@@ -67,10 +70,13 @@ $(function () {
             console.log(`Longitude: ${crd.longitude}`);
             console.log(`More or less ${crd.accuracy} meters.`);
         }
+
         function error(err) {
             console.warn(`ERROR(${err.code}): ${err.message}`);
         }
+
         navigator.geolocation.getCurrentPosition(success, error, options);
+
         // Script MapBox init ---------------------------
         mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
         let map = new mapboxgl.Map({
@@ -81,7 +87,9 @@ $(function () {
             scrollZoom: false,
             doubleClickZoom: false,
         });
+
         map.on('click', function(e) {
+
             let pointer = e.lngLat;
             let hiddenLong = document.getElementById('hiddenLong');
             let hiddenLat = document.getElementById('hiddenLat');
@@ -92,10 +100,12 @@ $(function () {
 
             console.log(hiddenLong.value, hiddenLat.value);
 
+
             if(checkDiv !== null && checkIcon !== null){
                 checkDiv.parentNode.removeChild(checkDiv);
                 checkIcon.parentNode.removeChild(checkIcon);
             }
+
             // create DOM element for the marker
             let el = document.createElement('div');
             el.id = 'marker';
@@ -114,51 +124,68 @@ $(function () {
                 .setLngLat(e.lngLat)
                 .addTo(map);
         });
-        // Display block add caracteristique button
-        let btn = document.getElementById('menuCaracteristique');
-
-        btn.addEventListener("click", function () {
-            let hide = document.getElementById('hidden');
-            if (hide.style.display === "none") {
-                hide.style.display = "block"
-            }else {
-                hide.style.display = "none"
-            }
-        });
-        // Race choice on type
-        let typeCheck = document.getElementById('type');
-
-        typeCheck.addEventListener('input', function () {
-            let type = typeCheck.value;
-            let dogDisplay = document.getElementById('dogRace');
-            let catDisplay = document.getElementById('catRace');
-            let nacDisplay = document.getElementById('nacRace');
-            if (type == 1) {
-                dogDisplay.style.display = 'flex';
-                catDisplay.style.display = 'none';
-                nacDisplay.style.display = 'none';
-            } else if (type == 2) {
-                catDisplay.style.display = 'flex';
-                dogDisplay.style.display = 'none';
-                nacDisplay.style.display = 'none';
-            } else if (type == 3) {
-                nacDisplay.style.display = 'flex';
-                dogDisplay.style.display = 'none';
-                catDisplay.style.display = 'none';
-            } else if (type == 0) {
-                nacDisplay.style.display = 'none';
-                dogDisplay.style.display = 'none';
-                catDisplay.style.display = 'none';
-            }
-        });
-
-        // Add input caracteristique on click
-
 
 
         // Date picker script -----------------------
         $("#datepicker").datepicker();
-    } else if ( window.location.href === 'http://project.test/list' ||  window.location.href === 'http://project.test/list#' ){
+    } else if ( window.location.href === 'http://project.test/list' || window.location.href === 'http://project.test/list#' || window.location.href === 'https://www.loocateme.fr/list' ){
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+
+        let $filter = $('#filter');
+        $($filter).submit(function(e){
+            e.preventDefault();
+
+            let $types       = ($('select[name="type"] option:selected:not([disabled])').length) ? $('select[name="type"] option:selected:not([disabled])').val():-1;
+            let $colors      = ($('select[name="color"] option:selected:not([disabled])').length) ? $('select[name="color"] option:selected:not([disabled])') .val():-1;
+            let $colorsEyes  = ($('select[name="eyes-color"] option:selected:not([disabled])').length) ? $('select[name="eyes-color"] option:selected:not([disabled])') .val():-1;
+            let $microships  = ($('input[name="microship"]:checked').length) ? $('input[name="microship"]:checked').val():-1;
+            let $collars     = ($('input[name="collar"]:checked').length) ? $('input[name="collar"]:checked').val():-1;
+            let $genders     = ($('input[name="gender"]:checked').length) ? $('input[name="gender"]:checked').val():-1;
+            let $sizes      = ($('input[name="size"]:checked').length) ? $('input[name="size"]:checked').val():-1;
+            let $furSizes    = ($('input[name="fur-size"]:checked').length) ? $('input[name="fur-size"]:checked').val():-1;
+            let $ages        = ($('input[name="age"]:checked').length) ? $('input[name="age"]:checked').val():-1;
+
+            $.ajax({
+                url: "/list",
+                type: "POST",
+                dataType: "json",
+                data:   "types=" + $types +
+                    "&colors=" + $colors +
+                    "&colorsEyes=" + $colorsEyes +
+                    "&microships=" + $microships +
+                    "&collars=" + $collars +
+                    "&genders=" + $genders +
+                    "&sizes=" + $sizes +
+                    "&furSizes=" + $furSizes +
+                    "&ages=" + $ages ,
+
+            }).done(function (data){
+                $data = data;
+                console.log($data);
+                $('#filtered-view').empty();
+
+                $.each($data, function(i){
+                    $('#filtered-view').append('<div class="col-md-6"><div class="cst-card"><div class="text-center"><a href=""><img src="http://placekitten.com/400/250" alt=""></a><h2>' + data[i]['name'] + '</h2></div><div class="list"><ul class="desc"><li class="desc-list">Situation : ' + data[i]['status_id_fk'] + '</li><li class="desc-list">Animal : ' + data[i]['races_label'] + '</li><li class="desc-list">Tailles : <i class="fas fa-dog"></i>' + data[i]['sizes_label'] + '</li><li class="desc-list"></li></ul></div></div></div> ');
+                })
+            });
+
+        });
+
+        mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
+        let map = new mapboxgl.Map({
+            container: 'map-view',
+            style: 'mapbox://styles/waazza/cjxzueo0b0pz51cpewfnc822o',
+            zoom: 16,
+            center: [-0.5827,44.8423],
+            scrollZoom: false,
+            doubleClickZoom: false,
+        });
+
 
         // Switch list/map view ---------------------------
 
@@ -168,18 +195,87 @@ $(function () {
         let listView = document.getElementById("list-view");
         let mapView = document.getElementById("map-view");
 
-        mapIcon.addEventListener("click", showMap);
-        function showMap(){
-            mapView.style.display = "block";
+        mapIcon.addEventListener("click", function(){
             listView.style.display = "none";
-        }
+            mapView.style.display = "block";
+            map.resize();
+        });
 
-        listIcon.addEventListener("click", showList);
-        function showList(){
+        listIcon.addEventListener("click", function (){
             mapView.style.display = "none";
             listView.style.display = "block";
-        }
-    }else if(  window.location.href === 'http://project.test/monCompte/addAnimal' ) {
+        });
+
+        map.on('load', function(e) {
+            $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+
+            $.ajax({
+                url: "/ajaxMapList",
+                type: "POST",
+                dataType: "json",
+            }).done(function (data){
+                for (let i = 0; i < data.length; i++){
+                    let loca = data[i].localisation;
+                    let arrayLoca = loca.split(' ');
+                    console.log(arrayLoca);
+
+                    let el = document.createElement('div');
+                    el.id = 'marker' + i;
+                    el.className = 'marker';
+                    let icon = document.createElement('img');
+                    icon.id = 'center-marker' + i;
+                    icon.className = 'center-marker';
+                    let logo = document.createAttribute('src');
+                    logo.value = '/storage/dog.png';
+                    icon.setAttributeNode(logo);
+
+                    new mapboxgl.Marker(el)
+                        .setLngLat(arrayLoca)
+                        .addTo(map);
+
+                    new mapboxgl.Marker(icon)
+                        .setLngLat(arrayLoca)
+                        .addTo(map);
+                }
+            });
+            // let pointer = e.lngLat;
+            // let hiddenLong = document.getElementById('hiddenLong');
+            // let hiddenLat = document.getElementById('hiddenLat');
+            // hiddenLong.value = pointer.lng;
+            // hiddenLat.value = pointer.lat;
+            // let checkDiv = document.getElementById('marker');
+            // let checkIcon = document.getElementById('center-marker');
+            //
+            // console.log(hiddenLong.value, hiddenLat.value);
+            //
+            //
+            // if(checkDiv !== null && checkIcon !== null){
+            //     checkDiv.parentNode.removeChild(checkDiv);
+            //     checkIcon.parentNode.removeChild(checkIcon);
+            // }
+            //
+            // // create DOM element for the marker
+            // let el = document.createElement('div');
+            // el.id = 'marker';
+            // let icon = document.createElement('img');
+            // icon.id = 'center-marker';
+            // let logo = document.createAttribute('src');
+            // logo.value = '/storage/locating.png';
+            // icon.setAttributeNode(logo);
+            //
+            // // create the marker
+            // new mapboxgl.Marker(el)
+            //     .setLngLat(e.lngLat)
+            //     .addTo(map);
+            //
+            // new mapboxgl.Marker(icon)
+            //     .setLngLat(e.lngLat)
+            //     .addTo(map);
+        });
+
+
+
+    }else if(  window.location.href === 'http://project.test/monCompte/addAnimal' || window.location.href === 'https://www.loocateme.fr' ) {
 
         let typeCheck = document.getElementById('type');
 
@@ -217,12 +313,13 @@ $(function () {
 
 
     }else if (window.location.href === 'http://project.test/forms/inscriptions' ){
-        // Ajax selection de ville -----------------------
+        // Ajax selection de ville -----------------------  
         $("#zipCode").on("input", function () {
             $zipCode = $("#zipCode");
             if(zipCode.value.length ==  5) {
                 $.ajaxSetup({
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')} });
+                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+                });
                 $.ajax({
                     type: 'POST',
                     url: '/ajaxZipCode',

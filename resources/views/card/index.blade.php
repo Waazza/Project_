@@ -6,55 +6,82 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-center cst-img-position">
-                <img src="http://placekitten.com/400/300{{--{{ $animal->picture }}--}}" alt="">
+                @if(!empty($singleAnimal->picture))
+                    <img src="{{$singleAnimal->picture}}" alt="">
+                @else
+                    <img src="http://placekitten.com/400/300" alt="">
+                @endif
             </div>
             <div class="col-md-6 cst-bloc">
                 <h2 class="text-center">Description</h2>
                 <div class="row">
-
                     <div class="col-md-6">
                         <ul class="desc">
                             <li class="desc-list">
-                                Perdu le : {{-- {{ $status->lost_at }}--}}
+                                Nom : {{ $singleAnimal->name}}
+                            </li>
+                            @if($singleAnimal->statu->label === 'perdu')
+                            <li class="desc-list">
+                                Perdu le :  {{ $singleAnimal->statu->lost_at}}
+                            </li>
+                            @elseif ($singleAnimal->statu->label === 'trouvé')
+                            <li class="desc-list">
+                                Trouvé le : {{ $singleAnimal->statu->found_at}}
+                            </li>
+                            @endif
+                            <li class="desc-list">
+                                @if ($singleAnimal->color->label)
+                                    Couleur des poils : {{ $singleAnimal->color->label}}
+                                @endif
                             </li>
                             <li class="desc-list">
-                               Nom : {{-- {{ $animal->name }}--}}
+                                @if ($singleAnimal->size->label)
+                                    Taille : {{ $singleAnimal->size->label}}
+                                @endif
                             </li>
                             <li class="desc-list">
-                                Animal : {{--{{ $types->label }}--}}
-                            </li>
-                            <li class="desc-list">{{--@if(!empty($races->label))--}}
-                                Race : {{--{{ $races->label }}--}}
-                            </li>
-                            <li class="desc-list">
-                                Genre : {{--{{ $gender->label }}--}}
+                                @if ($singleAnimal->gender->label)
+                                    Genre : {{ $singleAnimal->gender->label}}
+                                @endif
                             </li>
                             <li class="desc-list">
-                                Tailles :
-                                <i class="fas fa-dog"></i>
+                                @if ($singleAnimal->race->label)
+                                    Race : {{ $singleAnimal->race->label}}
+                                @endif
                             </li>
                         </ul>
                     </div>
                     <div class="col-md-6">
                         <ul class="desc">
-                            <li class="desc-list">{{--@if(!empty($color_eyes->label))--}}
-                                Couleur des yeux : {{--{{ $color_eyes->label }}--}}
-                            </li>
-                            <li class="desc-list">{{--@if(!empty($fur_sizes->label))--}}
-                                Tailles des poils : {{--{{ $fur_sizes->label }}--}}
-                            </li>
-                            <li class="desc-list">{{--@if(!empty($animals->collar))--}}
-                                Collier : {{--{{ $animals->collar }}--}}
-                            </li>
-                            <li class="desc-list">{{--@if(!empty($animals->microship))--}}
-                                Puce : {{--{{ $animals->microship }}--}}
-                            </li>
-                            <li class="desc-list">{{--@if(!empty($animals->tatoo))--}}
-                                Tatouage : {{--{{ $animals->tatoo }}--}}
-                            </li>
+                            @if(!empty($singleAnimal->colorEyes->label))
                             <li class="desc-list">
-                                Age :
-                                <i class="fas fa-dog"></i>
+                                Couleur des yeux : {{ $singleAnimal->colorEyes->label}}
+                            </li>
+                            @endif
+                            @if(!empty($singleAnimal->furSize->label))
+                            <li class="desc-list">
+                                Tailles des poils : {{ $singleAnimal->furSize->label}}
+                            </li>
+                            @endif
+                            @if(!empty($singleAnimal->collar))
+                            <li class="desc-list">
+                                Collier : {{ $singleAnimal->collar }}
+                            </li>
+                            @endif
+                            @if(!empty($singleAnimal->microship))
+                            <li class="desc-list">
+                                Puce : {{ $singleAnimal->microship }}
+                            </li>
+                            @endif
+                            @if(!empty($singleAnimal->tatoo))
+                            <li class="desc-list">
+                                Tatouage : {{ $singleAnimal->tatoo }}
+                            </li>
+                             @endif
+                            <li class="desc-list">
+                            @if(!empty($singleAnimal->age->label))
+                                Age :{{ $singleAnimal->age->label }}
+                            @endif
                             </li>
                         </ul>
                     </div>

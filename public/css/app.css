@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@charset "UTF-8";
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -34,7 +34,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -66,7 +66,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -6139,7 +6139,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6264,7 +6264,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -10644,88 +10644,146 @@ a.text-dark:focus {
   }
 }
 
-.desc .desc-list {
-  list-style: none;
-  padding: 8px;
+* html,
+* body {
+  background-color: #fff;
+  color: #636b6f;
+  font-weight: 200;
+  height: 100vh;
+  margin: 0;
 }
 
-.cst-img-position {
-  margin: auto;
+* .full-height {
+  height: 100vh;
 }
 
-input[type=range] {
-  -webkit-appearance: none;
-  width: 160px;
-  height: 10px;
-  margin: 10px 50px;
-  background: linear-gradient(to right, #2193b0 0%, #6dd5ed 100%);
-  background-size: 150px 10px;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  outline: none;
-}
-
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 12px;
-  border-radius: 50px;
-  height: 11px;
-  background: black;
-  position: relative;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
-}
-
-.cst-bloc {
-  height: auto;
-  width: 100%;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  box-shadow: 0px 2px #ddd;
-  margin: 20px 0;
-  padding: 15px;
-}
-
-.search-icon {
-  position: absolute;
-  left: 50px;
-  top: 25px;
-}
-
-.cst-filter {
-  width: 100%;
-  padding: 12px 12px 12px 40px;
-  border: 1px solid #ddd;
-  background: #ffffff;
-}
-
-#cst-display-list {
-  display: none;
-}
-
-#cst-display-map {
-  display: none;
-}
-
-.cst-onglet {
-  margin: 50px 0;
-  width: 50px;
-  padding: 12px 12px 12px;
-  border: 1px solid #ddd;
-  background: #ffffff;
-}
-
-.cst-card {
-  border: 1px solid #ddd;
-  width: 400px;
-  margin: 0 auto;
-}
-
-.cst-arrow {
+* .flex-center {
+  align-items: center;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  font-size: 52px;
+}
+
+* .position-ref {
+  position: relative;
+}
+
+* .top-right {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+}
+
+* .content {
+  text-align: center;
+}
+
+* .title {
+  font-size: 84px;
+}
+
+* .links > a {
+  color: #636b6f;
+  padding: 0 25px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+* .m-b-md {
+  margin-bottom: 30px;
+}
+
+.formAnimal {
+  margin-top: 5%;
+}
+
+.formAnimal .picturInput {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.formAnimal .picturInput .img-fluid {
+  width: 60%;
+  background-image: url(https://via.placeholder.com/150);
+  background-size: cover;
+  height: 250px;
+}
+
+.formAnimal .picturInput input {
+  background-image: url("/storage/calendar1.png");
+  background-position: right;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+.formAnimal .categoryInput {
+  padding: 0;
+}
+
+.formAnimal .categoryInput .category {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.formAnimal .categoryInput .category select,
+.formAnimal .categoryInput .category input {
+  width: 30%;
+}
+
+.formAnimal .categoryInput .category .addCategory {
+  width: 60%;
+}
+
+.formAnimal .categoryInput .dogRace {
+  display: none;
+}
+
+.formAnimal .categoryInput .catRace {
+  display: none;
+}
+
+.formAnimal .categoryInput .nacRace {
+  display: none;
+}
+
+.formAnimal .comment {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.formAnimal .keepIt {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100% !important;
+  align-items: center;
+}
+
+.formAnimal .keepIt .checkRefuge {
+  display: flex;
+}
+
+.formAnimal .keepIt .checkRefuge .refuge {
+  width: 90%;
+}
+
+.formAnimal .keepIt .checkRefuge .day {
+  width: 25% !important;
+}
+
+.formAnimal .menuCaracteristique #hidden {
+  display: none;
+  position: absolute;
+  z-index: 99999;
+}
+
+.formAnimal .menuCaracteristique #hidden tr {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .formInscriptions {
@@ -10756,5 +10814,201 @@ input[type=range]::-webkit-slider-thumb {
     display: flex;
     flex-direction: column;
   }
+}
+
+.desc .desc-list {
+  list-style: none;
+  padding: 8px;
+}
+
+.cst-img-position {
+  margin: auto;
+}
+
+.cst-bloc {
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 2px #ddd;
+  margin: 20px 0;
+  padding: 15px;
+}
+
+.cst-filter {
+  width: 100%;
+  padding: 5px 5px 5px 20px;
+  border: 1px solid #ddd;
+  background: #ffffff;
+}
+
+.cst-filter .sidebar-label {
+  padding-right: 8%;
+}
+
+#cst-display-list {
+  display: none;
+}
+
+#cst-display-map {
+  display: none;
+}
+
+#map-view {
+  display: none;
+  height: 1000px;
+  width: 1000px;
+}
+
+.cst-onglet {
+  margin: 50px 0;
+  width: 50px;
+  padding: 12px 12px 12px;
+  border: 1px solid #ddd;
+  background: #ffffff;
+}
+
+.cst-card {
+  border: 1px solid #ddd;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.cst-arrow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 52px;
+}
+
+.cst-toggle-sidebar {
+  display: none;
+}
+
+#map-view .marker {
+  height: 200px;
+  width: 200px;
+  z-index: 5;
+  border-radius: 50%;
+}
+
+#map-view .marker:hover {
+  background-color: rgba(0, 0, 255, 0.2);
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 1199px) {
+  .sidebar {
+    display: none;
+  }
+
+  .sidebar .cst-toggle-sidebar {
+    display: block;
+  }
+}
+
+.dash-row {
+  margin: 0;
+}
+
+.dash-top {
+  margin-bottom: 100px;
+}
+
+.card .img-card {
+  height: 250px;
+  background-image: url("/storage/cat.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card .img-trap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card .img-trap .img-thumb {
+  width: 100%;
+  height: 100%;
+}
+
+.cst-nav {
+  margin-bottom: 50px;
+}
+
+.cstx-bg {
+  color: black;
+  border-width: 3px;
+  border-style: solid;
+  -o-border-image: linear-gradient(to bottom, white, #646464) 1 100%;
+     border-image: linear-gradient(to bottom, white, #646464) 1 100%;
+}
+
+.tatooInput {
+  display: none;
+}
+
+.dogRace {
+  display: none;
+}
+
+.catRace {
+  display: none;
+}
+
+.nacRace {
+  display: none;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.btn-container .btn-submit {
+  border: 1rem solid green;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  color: dodgerblue;
+}
+
+nav {
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+nav .navbar {
+  justify-content: space-between;
+}
+
+.controls-top {
+  justify-content: space-between;
+  display: flex;
+}
+
+.controls-top .btn-floating {
+  font-size: 3rem !important;
+}
+
+.carousel {
+  margin-bottom: 2rem;
+}
+
+.carousel .carousel-item {
+  width: 100%;
+  box-sizing: border-box;
+  height: 50%;
+  border: 1px solid black;
+  padding-left: 17rem;
+  padding-top: 2.5rem;
+}
+
+.carousel .carousel-item .col-12 {
+  display: inline-block;
+}
+
+.carousel .carousel-item .col-12 .card {
+  border: 1px solid red;
 }
 

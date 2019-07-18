@@ -1,15 +1,184 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// CSS Body/ master
+
+*{
+    html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+    }
+
+    .full-height {
+    height: 100vh;
+    }
+
+    .flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    }
+
+    .position-ref {
+    position: relative;
+    }
+
+    .top-right {
+        position: absolute;
+        right: 10px;
+        top: 18px;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    .title {
+        font-size: 84px;
+    }
+
+    .links > a {
+        color: #636b6f;
+        padding: 0 25px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: .1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .m-b-md {
+        margin-bottom: 30px;
+    }
+}
+
+  // CSS form/animals ---------------------------------------
+  .formAnimal{
+    margin-top: 5%;
+
+    .picturInput{
+      padding: 0;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+        .img-fluid{
+          width: 60%;
+          background-image: url(https://via.placeholder.com/150);
+          background-size: cover;
+          height: 250px;
+        }
+      input{
+        background-image: url("/storage/calendar1.png");
+        background-position: right;
+        background-repeat: no-repeat;
+        text-align: center;
+      }
+    }
+    .categoryInput{
+      padding: 0;
+
+      .category{
+        display:flex;
+        justify-content:space-evenly;
+
+        select, input{
+          width:30%;
+        }
+        .addCategory{
+          width: 60%;
+        } 
+      }
+        .dogRace{
+          display: none;
+        }
+        .catRace{
+          display: none;
+        }
+        .nacRace{
+          display: none;
+        }
+    }
+    .comment{
+      margin: 0 auto;
+      width: 60%;
+    }
+
+    .keepIt{
+      display: flex;
+      justify-content: space-evenly;
+      width: 100% !important;
+      align-items: center;
+
+      .checkRefuge{
+        display: flex;
+
+        .refuge{
+          width: 90%;
+        }
+        .day{
+          width: 25% !important;
+        }
+      }
+    }
+    .menuCaracteristique{
+        #hidden{
+            display: none;
+            position: absolute;
+            z-index: 99999;
+
+            tr{
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+        }
+    }
+    }
+
+// CSS form/inscriptions ---------------------------------------
+
+.formInscriptions{
+  margin-top: 20px;
+  .section{
+    border: 3px solid #3f9ae5;
+    border-radius: 10px;
+    box-shadow: 8px 8px 12px #aaa;
+    padding: 10px;
+
+    h3{
+      text-align: center;
+    }
+  }
+
+}
+#marker {
+  height: 200px;
+  width: 200px;
+  z-index: 5;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 255, 0.2);
+}
 
 
-// Style for Card's view
+
+// media queries ----------------------------------------------------
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .formInscriptions{
+    .row{
+      display:flex;
+      flex-direction: column;
+    }
+  }
+}
+
+// CSS page card --------------------------------------
 
 .desc{
     .desc-list{
@@ -21,30 +190,7 @@
 .cst-img-position{
     margin: auto;
 }
-// Range style
 
-input[type="range"]{
-    -webkit-appearance:none;
-    width:160px;
-    height:10px;
-    margin:10px 50px;
-    background: linear-gradient(to right, #2193b0 0%, #6dd5ed 100%);
-    background-size:150px 10px;
-    background-position:center;
-    background-repeat:no-repeat;
-    overflow:hidden;
-    outline: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 12px;
-    border-radius: 50px;
-    height: 11px;
-    background: black;
-    position: relative;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
-}
 $border : 1px solid #ddd;
 
 .cst-bloc{
@@ -57,19 +203,16 @@ $border : 1px solid #ddd;
     padding: 15px;
 }
 
-// Style for List's view
-
-.search-icon{
-    position: absolute;
-    left: 50px;
-    top: 25px;
-}
+// CSS page list -----------------------------------
 
 .cst-filter{
     width: 100%;
-    padding: 12px 12px 12px 40px;
+    padding: 5px 5px 5px 20px;
     border: $border;
     background: #ffffff;
+    .sidebar-label{
+        padding-right: 8%;
+    }
 }
 
 #cst-display-list{
@@ -78,6 +221,12 @@ $border : 1px solid #ddd;
 
 #cst-display-map{
     display: none;
+}
+
+#map-view{
+  display: none;
+  height: 1000px;
+  width: 1000px;
 }
 
 .cst-onglet{
@@ -101,39 +250,176 @@ $border : 1px solid #ddd;
     font-size: 52px;
 }
 
-// CSS form/inscriptions ---------------------------------------
-.formInscriptions{
-    margin-top: 20px;
-    .section{
-        border: 3px solid #3f9ae5;
-        border-radius: 10px;
-        box-shadow: 8px 8px 12px #aaa;
-        padding: 10px;
-
-        h3{
-            text-align: center;
-        }
-    }
-
+.cst-toggle-sidebar{
+    display: none;
 }
-#marker {
+
+#map-view{
+
+  .marker{
     height: 200px;
     width: 200px;
     z-index: 5;
-    //border: 1px solid black;
     border-radius: 50%;
-    background-color: rgba(0, 0, 255, 0.2);
+      &:hover{
+        background-color: rgba(0, 0, 255, 0.2);
+      }
+
+  }
 }
-
-
 
 // media queries ----------------------------------------------------
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    .formInscriptions{
-        .row{
-            display:flex;
-            flex-direction: column;
+@media only screen and (min-device-width : 320px) and (max-device-width : 1199px) {
+    .sidebar{
+        display: none;
+        .cst-toggle-sidebar{
+            display: block;
         }
     }
+}
+// CSS page monCompte/dashboard ----------------------------------------
+
+.dash-row{
+  margin: 0;
+}
+
+.dash-top{
+  margin-bottom: 100px;
+}
+
+.card{
+
+  .img-card{
+    height: 250px;
+    background-image: url("/storage/cat.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .img-trap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .img-thumb{
+      width: 100%;
+      height: 100%;
+    }
+
+  }
 
 }
+
+.cst-nav{
+  margin-bottom: 50px;
+}
+.cstx-bg{
+  color: black;
+  border-width: 3px;
+  border-style: solid;
+  border-image:
+
+          linear-gradient(
+                          to bottom,
+                          white,
+                          rgba(100, 100, 100, 1)
+          ) 1 100%;
+}
+
+// CSS monCompte/addAnimal
+
+.tatooInput{
+  display: none;
+}
+
+.dogRace{
+  display: none;
+}
+.catRace{
+  display: none;
+}
+.nacRace{
+  display: none;
+}
+
+// CSS Homepage
+
+.btn-container{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+    .btn-submit{
+      border:1rem solid green;
+      font-weight: bolder;
+      font-size: 1.5rem;
+      color:dodgerblue;
+  }
+}
+
+nav{
+  margin-bottom: 1rem;
+    display:flex;
+  .navbar{
+    justify-content: space-between;
+    .navbar-brand{
+      .navbar-nav{
+          .nav-link{
+        .nav-item{
+          }
+      }
+        }
+    }
+  }
+}
+.controls-top{
+  justify-content: space-between;
+  display:flex;
+    .btn-floating{
+      font-size: 3rem!important;
+      .fa {
+    }
+  }
+}
+
+//.row {
+//    .found-pets {
+//      align-items: center;
+//      justify-content: flex-start;
+//      display:flex;
+//      align-content: center;
+//    .lost-pets{
+//    }
+//      align-items: center;
+//      display:flex;
+//      justify-content: flex-end;
+//      align-content: center;
+//    }
+//      height: 20rem;
+//    .btn{
+//      width: 25rem;
+//      font-size: 2rem;
+//      border-radius: 15rem;
+//      font-weight:bolder;
+//      color:red;
+//      opacity: 0.6;
+//      background-color: silver;
+//}
+//    }
+
+.carousel{
+  margin-bottom: 2rem;
+  .carousel-item{
+      width:100%;
+      box-sizing: border-box;
+      height:50%;
+      border: 1px solid black;
+      padding-left: 17rem;
+      padding-top: 2.5rem;
+      .col-12{
+        display:inline-block;
+        .card{
+          border:1px solid red;
+        }
+      }
+}
+  }

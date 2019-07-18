@@ -13,6 +13,7 @@ use App\Model\Size;
 use App\Model\Type;
 use App\Http\Requests;
 
+use DB;
 use Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -31,7 +32,6 @@ class ListController extends Controller
     private $races;
     private $sizes;
     private $types;
-
     private $data;
 
     public function __construct()
@@ -68,7 +68,20 @@ class ListController extends Controller
 
     public function index()
     {
-            return view('list.index')
+        $animals = Animal::all();
+        foreach ($animals as $animal) {
+            $ages = $animal->age->label;
+            $colorsEyes = $animal->colorEyes->label;
+            $colors = $animal->color->label;
+            $furSizes = $animal->furSize->label;
+            $races = $animal->race->label;
+            $sizes = $animal->size->label;
+            $status = $animal->statu->label;
+        }
+
+
+//           dd($this->data);
+            return view('list.index', compact($animals, $ages, $colors, $colorsEyes, $furSizes, $races, $sizes, $status))
                 ->with($this->data);
     }
 
@@ -83,17 +96,19 @@ class ListController extends Controller
             return view('list.index')
                 ->with($this->data);
 
+
         } else {
             $animal = $animal->addSelect('animals.*');
             $animal = $animal->leftJoin('sizes','sizes.id','=','animals.size_id_fk')->addSelect('sizes.id as sizes_id', 'sizes.label as sizes_label');
-            $animal = $animal->leftJoin('ages','ages.id','=','animals.age_id_fk')->addSelect('ages.id as ages_id', 'ages.label as ages_label');;
-            $animal = $animal->leftJoin('types','types.id','=','races.id_type_fk')->addSelect('types.id as types_id', 'types.label as types_label');
-            $animal = $animal->leftJoin('colors','colors.id','=','animals.color_id_fk')->addSelect('colors.id as colors_id', 'colors.label as colors_label');;
+            $animal = $animal->leftJoin('ages','ages.id','=','animals.age_id_fk')->addSelect('ages.id as ages_id', 'ages.label as ages_label');
+            $animal = $animal->leftJoin('types','types.id','=','races.id_type_fk')->addSelect('races.id as races_id', 'races.label as races_label');
+            $animal = $animal->leftJoin('colors','colors.id','=','animals.color_id_fk')->addSelect('colors.id as colors_id', 'colors.label as colors_label');
             $animal = $animal->leftJoin('color_eyes','color_eyes.id','=','animals.color_eyes_id_fk')->addSelect('color_eyes.id as color_eyes_id', 'color_eyes.color_eyes as color_eyes_label');
-            $animal = $animal->leftJoin('genders','genders.id','=','animals.gender_id_fk')->addSelect('genders.id as genders_id', 'genders.label as genders_label');;
-            $animal = $animal->leftJoin('fur_sizes','fur_sizes.id','=','animals.fur_size_id_fk')->addSelect('fur_sizes.id as fur_sizes_id', 'fur_sizes.label as fur_sizes_label');;
+            $animal = $animal->leftJoin('genders','genders.id','=','animals.gender_id_fk')->addSelect('genders.id as genders_id', 'genders.label as genders_label');
+            $animal = $animal->leftJoin('fur_sizes','fur_sizes.id','=','animals.fur_size_id_fk')->addSelect('fur_sizes.id as fur_sizes_id', 'fur_sizes.label as fur_sizes_label');
 
 
+//          dd($data);
             // Search for an animal based on their type.
             if ($request->has('types') && $request->input('types')!=-1) {
                 $animal = $animal->where('race_id_fk', 'like', '%' . $request->input('types') . '%');
@@ -111,27 +126,27 @@ class ListController extends Controller
 
             // Search for an animal based on their microship.
             if ($request->has('microships') && $request->input('microships')!=-1) {
-                $animal = $animal->where('microship', 'like', '%' . $data['microship'] . '%');
+                $animal = $animal->where('microship', 'like', '%' . $data['microships'] . '%');
             }
 
             // Search for an animal based on their collar.
             if ($request->has('collars') && $request->input('collars')!=-1) {
-                $animal = $animal->where('collar', 'like', '%' . $data['collar'] . '%');
+                $animal = $animal->where('collar', 'like', '%' . $data['collars'] . '%');
             }
 
             // Search for an animal based on their gender.
             if ($request->has('genders') && $request->input('genders')!=-1) {
-                $animal = $animal->where('gender_id_fk', 'like', '%' . $data['gender'] . '%');
+                $animal = $animal->where('gender_id_fk', 'like', '%' . $data['genders'] . '%');
             }
 
             // Search for an animal based on their size.
             if ($request->has('sizes') && $request->input('sizes')!=-1) {
-                $animal = $animal->where('size_id_fk', 'like', '%' . $data['size'] . '%');
+                $animal = $animal->where('size_id_fk', 'like', '%' . $data['sizes'] . '%');
             }
 
             // Search for an animal based on their fur size
             if ($request->has('furSizes') && $request->input('furSizes')!=-1) {
-                $animal = $animal->where('fur_size_id_fk', 'like', '%' . $data['furSize'] . '%');
+                $animal = $animal->where('fur_size_id_fk', 'like', '%' . $data['furSizes'] . '%');
             }
 
             // Search for an animal based on their age.
@@ -142,7 +157,6 @@ class ListController extends Controller
 
                 $filteredAnimal = $animal->get();
                 echo json_encode($filteredAnimal);
-//              return response()->json($filteredAnimal);
             }
         }
 
@@ -158,8 +172,7 @@ class ListController extends Controller
 
     public function search(Request $request, Animal $animal)
     {
-        $animal = $animal->query()->join('races', 'races.id', '=', 'animals.race_id_fk' );
-        $data = $request->all();
+        $animal = $animal->query();
 
         if (empty($request)) {
             return view('list.index')
@@ -167,7 +180,7 @@ class ListController extends Controller
 
         } else {
 
-            $animal = $animal->addSelect('animals.*')->join('races');
+            $animal = $animal->addSelect('animals.*');
 
             $search = $request->get('search');
             if ($request->has('search') && $request->input('search') != -1) {
