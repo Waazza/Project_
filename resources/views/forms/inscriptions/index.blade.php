@@ -21,8 +21,8 @@
                         </div>
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         <div class="input">
-                            <label for="phone">Telephone</label>
-                            <input type="phone" class="form-control" id="phone" name="phone">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" class="form-control" id="phone" name="phone">
                         </div>
                     </div>
                 </div>
@@ -39,9 +39,9 @@
                         </div>
                         <div class="form-group cities" >
                             <label for="inputGroupSelect01">Ville</label>
-                                <select name="selectCity" class="custom-select" id="selectCity" required>
-                                    <option selected>Veuillez sélectionner une ville</option>
-                                </select>
+                            <select name="selectCity" class="custom-select" id="selectCity" required>
+                                <option selected>Veuillez sélectionner une ville</option>
+                            </select>
                         </div>
                     </div>
                 </div>

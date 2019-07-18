@@ -199,6 +199,7 @@ $(function() {
             doubleClickZoom: false,
         });
 
+
         // Switch list/map view ---------------------------
 
         let listIcon = document.getElementById("list-icon");

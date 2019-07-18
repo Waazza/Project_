@@ -56,12 +56,12 @@ class FormInscriController extends Controller
         }else{
             echo 'erreur de saisie';
         }
-        
+
         $rules = [
             'lastname'     => 'string|required',
             'firstname'  => 'string|required',
             'email' => 'email|required',
-            'phone' => 'integer|required',
+            'phone' => 'string|required',
             'address'   => 'string|required',
             'selectCity'   => 'string|required',
             'zipCode'   => 'string|required',
@@ -75,8 +75,8 @@ class FormInscriController extends Controller
             'firstname.required'  => 'Prénom obligatoire',
             'email.email'       => 'Email invalide',
             'email.required'    => 'Email obligatoire',
-            'phone.required'    => 'le numéro de telephone est obligatoir',
-            'phone.integer'    => 'le numéro de telephone est incorrect',
+            'phone.required'    => 'le numéro de telephone est obligatoire',
+            'phone.string'    => 'le numéro de telephone est incorrect',
             'address.string'  => 'Votre adresse est incorrect',
             'address.required'  => 'Adresse obligatoire',
             'selectCity.string'  => 'Votre Ville est incorrect',
@@ -87,11 +87,12 @@ class FormInscriController extends Controller
         ]);
 
         if($validator->fails()){
+            dd($validator);
             return Redirect::back()
                 ->withErrors($validator)
                 ->withInput();
         }
-        
+
         // add an animal to the db
         $addUser = new User();
 

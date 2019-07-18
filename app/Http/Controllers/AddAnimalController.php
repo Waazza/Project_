@@ -80,6 +80,5 @@ class AddAnimalController extends Controller
         $animal = Animal::all();
         return view('list.index')->with('animals', $animal);
 
-
     }
 }

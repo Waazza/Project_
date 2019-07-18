@@ -13,18 +13,18 @@ class AnimalsTableSeeder extends Seeder
     public function run()
     {
         DB::table('animals')->insert([
-            'name' => 'Bernard',
+            'name' => 'Léopold',
             'picture' => '',
-            'tatoo' => 0,
-            'microship' => 1,
+            'tatoo' => 1,
+            'microship' => 0,
             'status_id_fk' => 2,
-            'color_id_fk' => 1,
+            'color_id_fk' => 3,
             'size_id_fk' => 1,
-            'fur_size_id_fk' => 3,
+            'fur_size_id_fk' => 2,
             'gender_id_fk' => 1,
             'age_id_fk' => 1,
-            'race_id_fk' => 2,
-            'color_eyes_id_fk' => 5,
+            'race_id_fk' => 1,
+            'color_eyes_id_fk' => 1,
         ]);
     }
 }

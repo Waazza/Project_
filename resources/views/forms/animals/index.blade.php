@@ -148,30 +148,33 @@
                     <div class="col-4 checkHome">
                         <input type="checkbox" class="form-check-input" id="home">
                         <label class="form-check-label" for="home">Garder à la maison</label>
-                    </div> 
-                    <div class="col-4 checkRefuge"> 
-                        <div class="refuge"> 
-                            <input type="checkbox" class="form-check-input" id="refuge"> 
-                            <label class="form-check-label" for="refuge">Je l'améne au refuge pour</label> 
+                    </div>
+                    <div class="col-4 checkRefuge">
+                        <div class="refuge">
+                            <input type="checkbox" class="form-check-input" id="refuge">
+                            <label class="form-check-label" for="refuge">Je l'améne au refuge pour</label>
                         </div>
-                        <div> 
+                        <div>
                             <input type="number" class="day">
-                            <label for="jour">jour(s)</label> 
-                        </div> 
-                    </div> 
-                    <div class="col-4"> 
-                        <div> 
+                            <label for="jour">jour(s)</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div>
                             <input type="text" class="address">
                         </div>
                         <div>
-                            <a href="">Trouver un refuge à proximité</a> 
-                        </div> 
-                    </div> 
-                </div> 
-            </div> 
-            <div> 
-                <div id='map' style='width: 100%; height: 300px;'></div> 
+                            <a href="">Trouver un refuge à proximité</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="text" hidden id="hiddenLong" name="long">
+            <input type="text" hidden id="hiddenLat" name="lat">
+            <button type="submit">Envoyer</button>
+            <div>
+                <div id='map' style='width: 100%; height: 300px;'></div>
             </div>
         </div>
-    </form> 
+    </form>
 @endsection

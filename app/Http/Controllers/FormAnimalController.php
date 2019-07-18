@@ -11,7 +11,6 @@ use App\Model\Size;
 use App\Model\Statu;
 use App\Model\Type;
 
-
 class FormAnimalController extends Controller
 {
     /**
@@ -46,6 +45,5 @@ class FormAnimalController extends Controller
                 'nacs'   =>  $nacs
             ]);
     }
-
 }
 

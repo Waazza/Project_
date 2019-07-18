@@ -11,6 +11,7 @@
 |
 */
 
+Auth::routes();
 
 Route::get('/', function () {
     return view('home.index');
@@ -35,10 +36,17 @@ Route::get('/color', 'ListController@filterColor')->name('color');
 Route::get('/search', 'ListController@search')->name('search');
 Route::get('/race', 'ListController@race')->name('race');
 Route::post('/filter', 'ListController@filter')->name('filter');
-Route::get('/list', 'ListController@index')->name('list');
 Route::post('/ajaxMapList', 'ListController@ajaxMapList');
 Route::post('/abc', 'ListController@filter');
-
+Route::get('/list', 'ListController@index')->name('list');
+Route::post('/list', 'ListController@filter');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('home', 'HomeController');
+
+Route::get('/card', 'CardController@index');
+
+
+
+
+
