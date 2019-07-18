@@ -10903,6 +10903,7 @@ a.text-dark:focus {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #map-view .marker {
   height: 200px;
@@ -10944,6 +10945,31 @@ a.text-dark:focus {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+.formInscriptions {
+  margin-top: 20px;
+}
+
+.formInscriptions .section {
+  border: 3px solid #3f9ae5;
+  border-radius: 10px;
+  box-shadow: 8px 8px 12px #aaa;
+  padding: 10px;
+}
+
+.formInscriptions .section h3 {
+  text-align: center;
+}
+
+#marker {
+  height: 200px;
+  width: 200px;
+  z-index: 5;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 255, 0.2);
+}
+
+>>>>>>> Pierre
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .formInscriptions .row {
     display: flex;
@@ -10951,6 +10977,7 @@ a.text-dark:focus {
   }
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> Loick
 .cst-nav {
@@ -11107,3 +11134,5 @@ nav .navbar {
 }*/
 >>>>>>> Marie
 
+=======
+>>>>>>> Pierre

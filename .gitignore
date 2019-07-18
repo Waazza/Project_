@@ -13,3 +13,5 @@ yarn-error.log
 \.idea/
 *.css
 public/js/app.js
+public/css/app.css
+public/js/app.js
