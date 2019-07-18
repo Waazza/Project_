@@ -49214,7 +49214,11 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 // });
 
 $(function () {
+<<<<<<< HEAD
   if (window.location.href === 'http://project.test' || window.location.href === 'https://www.loocateme.fr') {
+=======
+  if (window.location.href === 'http://project.test') {
+>>>>>>> Marie
     // Check current page to select which script to run
     $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
       var next = $(this).next();
@@ -49222,6 +49226,7 @@ $(function () {
       if (!next.length) {
         next = $(this).siblings(':first');
       }
+<<<<<<< HEAD
 
       next.children(':first-child').clone().appendTo($(this));
 
@@ -49417,11 +49422,51 @@ $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
 
     var _map = new mapboxgl.Map({
       container: 'map-view',
+=======
+
+      next.children(':first-child').clone().appendTo($(this));
+
+      for (var i = 0; i < 0; i++) {
+        next = next.next();
+
+        if (!next.length) {
+          next = $(this).siblings(':first');
+        }
+
+        next.children(':first-child').clone().appendTo($(this));
+      }
+    });
+  } else if (window.location.href === 'http://project.test/lost' || window.location.href === 'http://project.test/found') {
+    var success = function success(pos) {
+      var crd = pos.coords;
+      console.log('Your current position is:');
+      console.log("Latitude : ".concat(crd.latitude));
+      console.log("Longitude: ".concat(crd.longitude));
+      console.log("More or less ".concat(crd.accuracy, " meters."));
+    };
+
+    var error = function error(err) {
+      console.warn("ERROR(".concat(err.code, "): ").concat(err.message));
+    };
+
+    // SSL Certificat needed ---------------------------​
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+    navigator.geolocation.getCurrentPosition(success, error, options); // Script MapBox init ---------------------------
+
+    mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
+    var map = new mapboxgl.Map({
+      container: 'map',
+>>>>>>> Marie
       style: 'mapbox://styles/waazza/cjxzueo0b0pz51cpewfnc822o',
       zoom: 16,
       center: [-0.5827, 44.8423],
       scrollZoom: false,
       doubleClickZoom: false
+<<<<<<< HEAD
     }); // Switch list/map view ---------------------------
 
 
@@ -49502,6 +49547,48 @@ $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
       //     .addTo(map);
     });
   } else if (window.location.href === 'http://project.test/monCompte/addAnimal' || window.location.href === 'https://www.loocateme.fr') {
+=======
+    });
+    map.on('click', function (e) {
+      var pointer = e.lngLat;
+      var hiddenLong = document.getElementById('hiddenLong');
+      var hiddenLat = document.getElementById('hiddenLat');
+      hiddenLong.value = pointer.lng;
+      hiddenLat.value = pointer.lat;
+      var checkDiv = document.getElementById('marker');
+      var checkIcon = document.getElementById('center-marker');
+      console.log(hiddenLong.value, hiddenLat.value);
+
+      if (checkDiv !== null && checkIcon !== null) {
+        checkDiv.parentNode.removeChild(checkDiv);
+        checkIcon.parentNode.removeChild(checkIcon);
+      } // create DOM element for the marker
+
+
+      var el = document.createElement('div');
+      el.id = 'marker';
+      var icon = document.createElement('img');
+      icon.id = 'center-marker';
+      var logo = document.createAttribute('src');
+      logo.value = '/storage/locating.png';
+      icon.setAttributeNode(logo); // create the marker
+
+      new mapboxgl.Marker(el).setLngLat(e.lngLat).addTo(map);
+      new mapboxgl.Marker(icon).setLngLat(e.lngLat).addTo(map);
+    }); // Display block add caracteristique button
+
+    var btn = document.getElementById('menuCaracteristique');
+    btn.addEventListener("click", function () {
+      var hide = document.getElementById('hidden');
+
+      if (hide.style.display === "none") {
+        hide.style.display = "block";
+      } else {
+        hide.style.display = "none";
+      }
+    }); // Race choice on type
+
+>>>>>>> Marie
     var typeCheck = document.getElementById('type');
     typeCheck.addEventListener('input', function () {
       var type = typeCheck.value;
@@ -49521,8 +49608,62 @@ $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
         nacDisplay.style.display = 'flex';
         dogDisplay.style.display = 'none';
         catDisplay.style.display = 'none';
+<<<<<<< HEAD
       }
     });
+=======
+      } else if (type == 0) {
+        nacDisplay.style.display = 'none';
+        dogDisplay.style.display = 'none';
+        catDisplay.style.display = 'none';
+      }
+    }); // Add input caracteristique on click
+    // Date picker script -----------------------
+
+    $("#datepicker").datepicker();
+  } else if (window.location.href === 'http://project.test/list' || window.location.href === 'http://project.test/list#') {
+    var showMap = function showMap() {
+      mapView.style.display = "block";
+      listView.style.display = "none";
+    };
+
+    var showList = function showList() {
+      mapView.style.display = "none";
+      listView.style.display = "block";
+    };
+
+    // Switch list/map view ---------------------------
+    var listIcon = document.getElementById("list-icon");
+    var mapIcon = document.getElementById("map-icon");
+    var listView = document.getElementById("list-view");
+    var mapView = document.getElementById("map-view");
+    mapIcon.addEventListener("click", showMap);
+    listIcon.addEventListener("click", showList);
+  } else if (window.location.href === 'http://project.test/monCompte/addAnimal') {
+    var _typeCheck = document.getElementById('type');
+
+    _typeCheck.addEventListener('input', function () {
+      var type = _typeCheck.value;
+      var dogDisplay = document.getElementById('dogRace');
+      var catDisplay = document.getElementById('catRace');
+      var nacDisplay = document.getElementById('nacRace');
+
+      if (type == 1) {
+        dogDisplay.style.display = 'flex';
+        catDisplay.style.display = 'none';
+        nacDisplay.style.display = 'none';
+      } else if (type == 2) {
+        catDisplay.style.display = 'flex';
+        dogDisplay.style.display = 'none';
+        nacDisplay.style.display = 'none';
+      } else if (type == 3) {
+        nacDisplay.style.display = 'flex';
+        dogDisplay.style.display = 'none';
+        catDisplay.style.display = 'none';
+      }
+    });
+
+>>>>>>> Marie
     var tatooCheck = document.getElementsByName('checkTatoo');
     tatooCheck[0].addEventListener('click', function () {
       var tatooInput = document.getElementById('tatooInput');
@@ -49532,7 +49673,41 @@ $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
       var tatooInput = document.getElementById('tatooInput');
       tatooInput.style.display = 'none';
     });
+<<<<<<< HEAD
 >>>>>>> Loick
+=======
+  } else if (window.location.href === 'http://project.test/forms/inscriptions') {
+    // Ajax selection de ville -----------------------
+    $("#zipCode").on("input", function () {
+      $zipCode = $("#zipCode");
+
+      if (zipCode.value.length == 5) {
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+        $.ajax({
+          type: 'POST',
+          url: '/ajaxZipCode',
+          data: 'zipCodeCities=' + zipCode.value
+        }).always(function (data) {
+          var cities = data.city;
+
+          for (var i = 0; i < cities.length; i++) {
+            var select = document.getElementById('selectCity');
+            var option = document.createElement('option');
+            option.classList.add('city');
+            option.setAttribute('value', cities[i].name);
+            option.text = cities[i].name;
+            select.add(option);
+          }
+        });
+      } else {
+        $('.city').remove();
+      }
+    });
+>>>>>>> Marie
   }
 });
 

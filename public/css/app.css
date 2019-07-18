@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@charset "UTF-8";
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -34,7 +34,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -66,7 +66,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -6139,7 +6139,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6264,7 +6264,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -10644,6 +10644,57 @@ a.text-dark:focus {
   }
 }
 
+* html,
+* body {
+  background-color: #fff;
+  color: #636b6f;
+  font-weight: 200;
+  height: 100vh;
+  margin: 0;
+}
+
+* .full-height {
+  height: 100vh;
+}
+
+* .flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+* .position-ref {
+  position: relative;
+}
+
+* .top-right {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+}
+
+* .content {
+  text-align: center;
+}
+
+* .title {
+  font-size: 84px;
+}
+
+* .links > a {
+  color: #636b6f;
+  padding: 0 25px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+* .m-b-md {
+  margin-bottom: 30px;
+}
+
 .formAnimal {
   margin-top: 5%;
 }
@@ -10687,6 +10738,18 @@ a.text-dark:focus {
   width: 60%;
 }
 
+.formAnimal .categoryInput .dogRace {
+  display: none;
+}
+
+.formAnimal .categoryInput .catRace {
+  display: none;
+}
+
+.formAnimal .categoryInput .nacRace {
+  display: none;
+}
+
 .formAnimal .comment {
   margin: 0 auto;
   width: 60%;
@@ -10711,9 +10774,16 @@ a.text-dark:focus {
   width: 25% !important;
 }
 
-.formAnimal iframe {
-  height: 300px;
-  width: 100%;
+.formAnimal .menuCaracteristique #hidden {
+  display: none;
+  position: absolute;
+  z-index: 99999;
+}
+
+.formAnimal .menuCaracteristique #hidden tr {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .formInscriptions {
@@ -10732,7 +10802,10 @@ a.text-dark:focus {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> Marie
 #marker {
   height: 200px;
   width: 200px;
@@ -10748,7 +10821,10 @@ a.text-dark:focus {
   }
 }
 
+<<<<<<< HEAD
 >>>>>>> Loick
+=======
+>>>>>>> Marie
 .desc .desc-list {
   list-style: none;
   padding: 8px;
@@ -10790,6 +10866,7 @@ a.text-dark:focus {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #map-view {
   display: none;
@@ -10798,6 +10875,12 @@ a.text-dark:focus {
 }
 
 >>>>>>> Loick
+=======
+#map-view {
+  display: none;
+}
+
+>>>>>>> Marie
 .cst-onglet {
   margin: 50px 0;
   width: 50px;
@@ -10860,6 +10943,7 @@ a.text-dark:focus {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .formInscriptions .row {
     display: flex;
@@ -10873,6 +10957,12 @@ a.text-dark:focus {
   margin-bottom: 50px;
 }
 
+=======
+.cst-nav {
+  margin-bottom: 50px;
+}
+
+>>>>>>> Marie
 .cstx-bg {
   color: black;
   border-width: 3px;
@@ -10882,8 +10972,11 @@ a.text-dark:focus {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #map-view {
 =======
+=======
+>>>>>>> Marie
 .tatooInput {
   display: none;
 }
@@ -10897,7 +10990,10 @@ a.text-dark:focus {
 }
 
 .nacRace {
+<<<<<<< HEAD
 >>>>>>> Loick
+=======
+>>>>>>> Marie
   display: none;
 }
 
@@ -10915,12 +11011,15 @@ a.text-dark:focus {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 h1 {
   color: dodgerblue;
 }
 
 =======
 >>>>>>> Loick
+=======
+>>>>>>> Marie
 nav {
   margin-bottom: 1rem;
   display: flex;
@@ -10939,6 +11038,7 @@ nav .navbar {
   font-size: 3rem !important;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 .row {
   height: 20rem;
@@ -10987,4 +11087,23 @@ nav .navbar {
 .carousel .carousel-item .col-12 .card {
   border: 1px solid red;
 }
+=======
+/*.carousel{
+  margin-bottom: 2rem;
+  .carousel-item{
+      width:100%;
+      box-sizing: border-box;
+      height:50%;
+      border: 1px solid black;
+      padding-left: 17rem;
+      padding-top: 2.5rem;
+      .col-12{
+        display:inline-block;
+        .card{
+          border:1px solid red;
+          }
+    }
+  }
+}*/
+>>>>>>> Marie
 
