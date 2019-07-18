@@ -31,6 +31,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 //     el: '#app',
 // });
 
+
 $(function() {
 
     if ( window.location.href === 'http://project.test' || window.location.href === 'https://www.loocateme.fr' ){ // Check current page to select which script to run
@@ -323,49 +324,33 @@ $(function() {
         });
 
 
+    }else if (window.location.href === 'http://project.test/forms/inscriptions' ){
+        // Ajax selection de ville -----------------------  
+        $("#zipCode").on("input", function () {
+            $zipCode = $("#zipCode");
+            if(zipCode.value.length ==  5) {
+                $.ajaxSetup({
+                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: '/ajaxZipCode',
+                    data: 'zipCodeCities=' + zipCode.value,
+                })
+                    .always(function (data) {
+                        let cities = data.city;
+                        for (let i = 0; i < cities.length; i++) {
+                            let select = document.getElementById('selectCity');
+                            let option = document.createElement('option')
+                            option.classList.add('city');
+                            option.setAttribute('value', cities[i].name);
+                            option.text = cities[i].name;
+                            select.add(option);
+                        }
+                    });
+            } else {
+                $('.city').remove();
+            }
+        })
     }
-});
-
-var listIcon = document.getElementById("list-icon");
-var mapIcon = document.getElementById("map-icon");
-
-var listView = document.getElementById("list-view");
-var mapView = document.getElementById("map-view");
-
-mapView.style.display = "none";
-
-mapIcon.addEventListener("click", showMap);
-function showMap(){
-    mapView.style.display = "block";
-    listView.style.display = "none";
-}
-
-listIcon.addEventListener("click", showList);
-function showList(){
-    mapView.style.display = "none";
-    listView.style.display = "block";
-}
-
-$( "#datepicker" ).datepicker();
-
-mapboxgl.accessToken = 'pk.eyJ1Ijoid2FhenphIiwiYSI6ImNqeHVjdjlpNzAyZGIzbW9oOGJ1d292M2sifQ.Q8IMBCsYd3VsCfxGavM3AA';
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11'
-});
-// jQuerry carousel slider cards controller
-$('.carousel.carousel-multi-item.v-2 .carousel-item').each(function(){
-  var next = $(this).next();
-  if (!next.length) {
-    next = $(this).siblings(':first');
-  }
-  next.children(':first-child').clone().appendTo($(this));
-
-  for (var i=0;i<0;i++) {
-    next=next.next();
-    if (!next.length) {
-      next=$(this).siblings(':first');
-    }
-    next.children(':first-child').clone().appendTo($(this));
-  }
 });

@@ -14,6 +14,7 @@ use App\Model\Size;
 use Response;
 use Illuminate\Http\Request;
 
+
 class ListController extends Controller
 {
     private $animals;
@@ -28,6 +29,7 @@ class ListController extends Controller
     private $furSizes;
     private $races;
     private $sizes;
+
 
     private $data;
 

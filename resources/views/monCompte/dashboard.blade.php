@@ -49,7 +49,6 @@
             </div>
             <div class="col-6">
                 <h2 class="text-center mb-5">Vos animaux <a href="{{ action('MonCompteController@form') }}" class="btn btn-primary">Ajouter votre animal</a></h2>
-
                 <div class="row">
                     <div class="col-10 offset-1">
                         <div class="card">

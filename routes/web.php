@@ -11,11 +11,14 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('home.index');
 });
 
 Route::get('/forms/inscriptions', 'FormInscriController@index');
+Route::post('/forms/inscriptions', 'FormInscriController@store');
+Route::post('/ajaxZipCode', 'FormInscriController@ajaxZipCode')->name('ajaxZipCode');
 
 Route::get('/lost', 'FormAnimalController@index');
 Route::post('/lost', 'AddAnimalController@store');

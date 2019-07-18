@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <div class="container formInscriptions">
-        <form method="Post" enctype="multipart/form-data">
+        <form method="Post" enctype="multipart/form-data" autocomplete="on">
             @csrf
             <div class="row" >
                 <div class="contact col-md-4">
@@ -9,17 +9,21 @@
                         <h3>Nom, prénom et email</h3>
                         <div class="input">
                             <label for="lastname">Nom</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="lastname">
+                            <input type="text" class="form-control" id="lastname" name="lastname">
                         </div>
                         <div class="input">
                             <label for="firstName">Prénom</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="firstname">
+                            <input type="text" class="form-control" id="firstname" name="firstname">
                         </div>
                         <div class="input">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" name="email">
+                            <input type="email" class="form-control" id="email" name="email">
                         </div>
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <div class="input">
+                            <label for="phone">Telephone</label>
+                            <input type="phone" class="form-control" id="phone" name="phone">
+                        </div>
                     </div>
                 </div>
                 <div class="address col-md-4">
@@ -27,15 +31,17 @@
                         <h3>Adresse</h3>
                         <div class="input">
                             <label for="address">Adresse</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="address">
+                            <input type="text" class="form-control" id="address" name="address">
                         </div>
-                        <div class="input">
-                            <label for="city">Ville</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="city">
-                        </div>
-                        <div class="input">
+                        <div class="form-group zipCode" >
                             <label for="zipCode">Code Postal</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="zipCode">
+                            <input type="text" class="form-control" id="zipCode" name="zipCode">
+                        </div>
+                        <div class="form-group cities" >
+                            <label for="inputGroupSelect01">Ville</label>
+                                <select name="selectCity" class="custom-select" id="selectCity" required>
+                                    <option selected>Veuillez sélectionner une ville</option>
+                                </select>
                         </div>
                     </div>
                 </div>
@@ -44,11 +50,11 @@
                         <h3>Mot de passe et confirmation</h3>
                         <div class="input">
                             <label for="password">Mot de passe</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                            <input type="password" class="form-control" id="password" name="password">
                         </div>
                         <div class="input">
                             <label for="checkPassword">Confirmer le mot de passe</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" name="checkPassword">
+                            <input type="password" class="form-control" id="checkPassword" name="checkPassword">
                         </div>
                     </div>
                 </div>
