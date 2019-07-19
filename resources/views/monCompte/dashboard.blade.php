@@ -1,5 +1,8 @@
 @extends('layouts.master')
 @section('content')
+@section('scripts-header')
+    <link rel="stylesheet" href="{{asset('css/dashborad.css')}}">
+@endsection
 
     <div class="container cstx-bg">
         <div class="row dash-row dash-top">

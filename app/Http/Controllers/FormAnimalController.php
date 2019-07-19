@@ -10,6 +10,11 @@ use App\Model\Race;
 use App\Model\Size;
 use App\Model\Statu;
 use App\Model\Type;
+use App\Model\Age;
+use Illuminate\Http\Request;
+use test\Mockery\Stubs\Animal;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 class FormAnimalController extends Controller
 {
@@ -27,6 +32,7 @@ class FormAnimalController extends Controller
         $sizes = Size::all();
         $status = Statu::all();
         $types = Type::all();
+        $ages = Age::all();
         $dogs = Race::all()->where('type_id_fk', 1);
         $cats = Race::all()->where('type_id_fk', 2);
         $nacs = Race::all()->where('type_id_fk', 3);
@@ -42,8 +48,132 @@ class FormAnimalController extends Controller
                 'types' => $types,
                 'dogs'   =>  $dogs,
                 'cats'   =>  $cats,
-                'nacs'   =>  $nacs
+                'nacs'   =>  $nacs,
+                'ages' => $ages
             ]);
     }
-}
 
+    public function addCaractéristique()
+    {
+
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $values = $request->all();
+
+        $rules = [
+            'name'     => 'string|required',
+            'picture'  => 'string',
+            'tatoo' => 'boolean',
+            'microship' => 'boolean',
+            'collar'   => 'boolean',
+            'comment'   => 'string',
+            'status'   => 'integer|required',
+            'colorEyes' => 'integer',
+            'color' => 'integer|required',
+            'size' => 'integer',
+            'furSize' => 'integer',
+            'gender' => 'integer',
+            'age' => 'integer',
+            'race' => 'integer'
+        ];
+
+        $validator = Validator::make($values, $rules, [
+            'name'     => '',
+            'picture'  => '',
+            'tatoo' => '',
+            'microship' => '',
+            'collar'   => '',
+            'comment'   => '',
+            'status'   => '',
+            'colorEyes' => '',
+            'color' => '',
+            'size' => '',
+            'furSize' => '',
+            'gender' => '',
+            'age' => '',
+            'race' => ''
+        ]);
+
+        // add an animal to the db
+        $addAnimal = new Animal();
+
+        $addAnimal->name  = $values['name'];
+        $addAnimal->picture  = $values['picture'];
+        $addAnimal->tatoo  = $values['tatoo'];
+        $addAnimal->microship  = $values['microship'];
+        $addAnimal->collar  = $values['collar'];
+        $addAnimal->comment  = $values['comment'];
+        $addAnimal->statu_id_fk  = $values['status'];
+        $addAnimal->user_id_fk  = $values['user'];
+        $addAnimal->color_eyes_id_fk  = $values['colorEyes'];
+        $addAnimal->color_id_fk  = $values['color'];
+        $addAnimal->size_id_fk  = $values['size'];
+        $addAnimal->fur_size_id_fk  = $values['furSize'];
+        $addAnimal->gender_id_fk  = $values['gender'];
+        $addAnimal->age_id_fk  = $values['age'];
+        $addAnimal->race_id_fk  = $values['race'];
+
+
+
+        // On sauvegarde le formulaire dans la table
+        $addAnimal->save();
+
+
+        $animal = Animal::all();
+        return view('list.index')->with('animals', $animal);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function select($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        //
+    }
+}

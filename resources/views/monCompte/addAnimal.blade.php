@@ -1,4 +1,10 @@
 @extends('layouts.master')
+@section('scripts-header')
+    <link rel="stylesheet" href="{{asset('css/addAnimal.css')}}">
+@endsection
+@section('scripts-footer')
+    <script type="text/javascript" src="{{ asset('js/addAnimal.js') }}"></script>
+@endsection
 @section('content')
     <div class="container">
         <form method="Post" enctype="multipart/form-data">

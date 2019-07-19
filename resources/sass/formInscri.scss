@@ -1,0 +1,23 @@
+// CSS form/inscriptions ---------------------------------------
+.formInscriptions{
+  margin-top: 20px;
+  .section{
+    border: 3px solid #3f9ae5;
+    border-radius: 10px;
+    box-shadow: 8px 8px 12px #aaa;
+    padding: 10px;
+
+    h3{
+      text-align: center;
+    }
+  }
+}
+// media queries ----------------------------------------------------
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .formInscriptions{
+    .row{
+      display:flex;
+      flex-direction: column;
+    }
+  }
+}

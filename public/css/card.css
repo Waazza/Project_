@@ -1,0 +1,31 @@
+.desc .desc-list {
+  list-style: none;
+  padding: 8px;
+}
+
+.cst-img-position {
+  margin: auto;
+}
+
+.cst-bloc {
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 2px #ddd;
+  margin: 20px 0;
+  padding: 15px;
+}
+
+.cst-size-img {
+  width: 400px;
+  height: 300px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 1199px) {
+  .cst-size-img {
+    width: 300px;
+    height: 200px;
+  }
+}
+

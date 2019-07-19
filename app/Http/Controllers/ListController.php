@@ -33,6 +33,7 @@ class ListController extends Controller
     private $sizes;
     private $types;
     private $data;
+    private $animale;
 
     public function __construct()
     {
@@ -69,19 +70,20 @@ class ListController extends Controller
     public function index()
     {
         $animals = Animal::all();
+        $i = 0;
         foreach ($animals as $animal) {
-            $ages = $animal->age->label;
-            $colorsEyes = $animal->colorEyes->label;
-            $colors = $animal->color->label;
-            $furSizes = $animal->furSize->label;
-            $races = $animal->race->label;
-            $sizes = $animal->size->label;
-            $status = $animal->statu->label;
+            $this->animale[$i]['age'] = $animal->age->label;
+            $this->animale[$i]['colorEyes'] = $animal->colorEyes->label;
+            $this->animale[$i]['color'] = $animal->color->label;
+            $this->animale[$i]['furSize'] = $animal->furSize->label;
+            $this->animale[$i]['race'] = $animal->race->label;
+            $this->animale[$i]['size'] = $animal->size->label;
+            $this->animale[$i]['statu'] = $animal->statu->label;
+            $i++;
         }
 
 
-//           dd($this->data);
-            return view('list.index', compact($animals, $ages, $colors, $colorsEyes, $furSizes, $races, $sizes, $status))
+            return view('list.index', compact($animals, $this->animale))
                 ->with($this->data);
     }
 
@@ -153,7 +155,6 @@ class ListController extends Controller
             if ($request->has('ages') && $request->input('ages')!=-1) {
                 $animal = $animal->where('age_id_fk', 'like', '%' . $data['ages'] . '%');
             }
-
 
                 $filteredAnimal = $animal->get();
                 echo json_encode($filteredAnimal);

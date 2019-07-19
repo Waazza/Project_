@@ -1,4 +1,10 @@
 @extends('layouts.master')
+@section('scripts-header')
+    <link rel="stylesheet" href="{{asset('css/formInscri.css')}}">
+@endsection
+@section('scripts-footer')
+    <script type="text/javascript" src="{{ asset('js/formInscri.js') }}"></script>
+@endsection
 @section('content')
     <div class="container formInscriptions">
         <form method="Post" enctype="multipart/form-data" autocomplete="on">

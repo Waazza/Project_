@@ -1,4 +1,14 @@
 {
+    "/js/addAnimal.js": "/js/addAnimal.js",
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/css/addAnimal.css": "/css/addAnimal.css",
+    "/css/formAnimal.css": "/css/formAnimal.css",
+    "/css/formInscri.css": "/css/formInscri.css",
+    "/css/list.css": "/css/list.css",
+    "/css/card.css": "/css/card.css",
+    "/css/dashboard.css": "/css/dashboard.css",
+    "/js/formAnimal.js": "/js/formAnimal.js",
+    "/js/formInscri.js": "/js/formInscri.js",
+    "/js/list.js": "/js/list.js"
 }

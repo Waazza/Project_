@@ -1,5 +1,8 @@
 @extends('layouts.master')
 @section('content')
+@section('scripts-header')
+    <link rel="stylesheet" href="{{asset('css/card.css')}}">
+@endsection
 
 {{--    {{ dd($animal) }}--}}
 <div class="container-fluid">
@@ -7,9 +10,9 @@
         <div class="row">
             <div class="col-md-6 text-center cst-img-position">
                 @if(!empty($singleAnimal->picture))
-                    <img src="{{$singleAnimal->picture}}" alt="">
+                    <img class="cst-size-img" src="{{$singleAnimal->picture}}" alt="">
                 @else
-                    <img src="http://placekitten.com/400/300" alt="">
+                    <img class="cst-size-img" src="/storage/unknowDog.png" alt="">
                 @endif
             </div>
             <div class="col-md-6 cst-bloc">

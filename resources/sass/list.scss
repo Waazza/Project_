@@ -1,0 +1,171 @@
+// CSS page list -----------------------------------
+$border : 1px solid #ddd;
+
+.cst-filter{
+    width: 100%;
+    padding: 2px 2px 2px 10px;
+    border: $border;
+    background: #ffffff;
+    .sidebar-label{
+        padding-right: 8%;
+    }
+}
+.cst-filter-3-options{
+    width: 100%;
+    padding: 2px 2px 2px 10px;
+    border: $border;
+    background: #ffffff;
+    .sidebar-label{
+        padding-right: 15%;
+    }
+}
+
+#cst-display-list{
+    display: none;
+}
+
+#cst-display-map{
+    display: none;
+}
+
+#map-view{
+    display: none;
+    height: 1000px;
+    width: 1000px;
+}
+.sidebar-header-label{
+    font-size: 18px;
+    .sidebar-label{
+        font-size: 14px;
+    }
+}
+.cst-onglet{
+    margin: 50px 0;
+    width: 50px;
+    padding: 12px 12px 12px;
+    border: $border;
+    background: #ffffff;
+}
+
+.cst-card{
+    border: $border;
+    width: 400px;
+    margin: 20px auto;
+}
+
+.cst-arrow{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 52px;
+}
+
+.cst-toggle-sidebar{
+    display: none;
+}
+
+.desc-list{
+    list-style: none;
+}
+
+#map-view{
+
+    .marker{
+        height: 200px;
+        width: 200px;
+        z-index: 5;
+        border-radius: 50%;
+        &:hover{
+            background-color: rgba(0, 0, 255, 0.2);
+        }
+
+    }
+}
+
+.cst-size-img{
+    width: 400px;
+    height: 300px;
+}
+
+button {
+    z-index: 1;
+    position: relative;
+    font-size: inherit;
+    font-family: inherit;
+    color: white;
+    padding: 0.5em 1em;
+    outline: none;
+    border: none;
+    background-color: #303F48;
+    overflow: hidden;
+    transition: color 0.4s ease-in-out;
+}
+
+// Sidebar
+
+body {
+    overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+
+
+// media queries ----------------------------------------------------
+@media only screen and (min-device-width : 320px) and (max-device-width : 1199px) {
+    .sidebar{
+        display: none;
+    }
+    .cst-toggle-sidebar{
+        display: block;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
+    .cst-card{
+        width: 300px;
+    }
+
+    .cst-size-img{
+        width: 300px;
+        height: 200px;
+    }
+}
+@media (min-width: 960px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}

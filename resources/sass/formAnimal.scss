@@ -1,0 +1,125 @@
+// CSS form/animals ---------------------------------------
+.formAnimal{
+    margin-top: 5%;
+    .picturInput{
+        padding: 0;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .img-fluid{
+            width: 60%;
+            background-image: url("/unknowDog.png");
+            background-size: cover;
+            height: 250px;
+        }
+        input{
+            background-image: url("/calendar1.png");
+            background-position: right;
+            background-repeat: no-repeat;
+            text-align: center;
+        }
+    }
+    .categoryInput{
+        padding: 0;
+        .category{
+            display:flex;
+            justify-content:space-evenly;
+            select, input{
+                width:30%;
+            }
+            .addCategory{
+                width: 60%;
+            }
+        }
+        #raceChoice{
+            display: none;
+            .dogRace{
+                display: none;
+            }
+            .catRace{
+                display: none;
+            }
+            .nacRace{
+                display: none;
+            }
+        }
+        .size{
+            display: none;
+        }
+        .fur{
+            display: none;
+        }
+        .eyes{
+            display: none;
+        }
+        .collar{
+            display: none;
+        }
+        .tatoo{
+            display: none;
+        }
+        .microship{
+            display: none;
+        }
+    }
+    .chooseYesNo{
+        width: 30%;
+        .yesNo{
+            padding: 0;
+        }
+    }
+    .menuCaracteristique{
+        #hidden{
+            display: none;
+            position: absolute;
+            z-index: 99999;
+            flex-direction: column;
+            align-items: flex-end;
+            tr{
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                .add{
+                    display: block;
+                }
+                .less{
+                    display: none;
+                }
+            }
+        }
+    }
+    .comment{
+        margin: 0 auto;
+        width: 60%;
+    }
+    .keepIt{
+        display: flex;
+        justify-content: space-evenly;
+        width: 100% !important;
+        align-items: center;
+        .checkRefuge{
+            display: flex;
+            .refuge{
+                width: 90%;
+            }
+            .day{
+                width: 25% !important;
+            }
+        }
+    }
+    #mapRefuge{
+        display: none;
+        position: absolute;
+        z-index: 99999;
+        width: 68%;
+        height: 300px;
+    }
+    #marker {
+        height: 200px;
+        width: 200px;
+        z-index: 5;
+        //border: 1px solid black;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 255, 0.2);
+    }
+}

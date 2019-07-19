@@ -32,7 +32,6 @@ Route::get('/monCompte/addAnimal', 'MonCompteController@form');
 Route::post('/monCompte/addAnimal', 'AddAnimalController@store');
 
 Route::get('/card/{id}', 'CardController@index')->name('card');
-Route::get('/color', 'ListController@filterColor')->name('color');
 Route::get('/search', 'ListController@search')->name('search');
 Route::get('/race', 'ListController@race')->name('race');
 Route::post('/filter', 'ListController@filter')->name('filter');
